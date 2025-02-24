@@ -982,14 +982,10 @@ section {
     border: 1px solid rgba(0, 255, 242, 0.1);
     border-radius: 15px;
     backdrop-filter: blur(10px);
-    transform: translateY(0);
-    transition: all 0.3s ease;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-10px);
-    background: rgba(0, 255, 242, 0.08);
-    border-color: rgba(0, 255, 242, 0.2);
+    /* Remove all hover effects */
 }
 
 .quote {

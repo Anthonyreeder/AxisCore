@@ -6,20 +6,25 @@ class TestimonialsCarousel {
         this.prevButton = document.querySelector('.carousel-arrow.prev');
         this.nextButton = document.querySelector('.carousel-arrow.next');
         
-        // Verify elements are found
         if (!this.prevButton || !this.nextButton) {
             console.error('Navigation buttons not found');
             return;
         }
+
+        // Clone cards for infinite loop
+        this.cards.forEach(card => {
+            const clone = card.cloneNode(true);
+            this.track.appendChild(clone);
+        });
 
         this.isDragging = false;
         this.startPos = 0;
         this.currentTranslate = 0;
         this.prevTranslate = 0;
         this.animationID = 0;
-        this.autoScrollSpeed = 1.5; // Increased auto-scroll speed
+        this.autoScrollSpeed = 1.5;
         this.isHovered = false;
-        this.cardWidth = this.cards[0].offsetWidth + 32; // Store card width + gap
+        this.cardWidth = this.cards[0].offsetWidth + 32;
         
         this.init();
     }
@@ -87,12 +92,12 @@ class TestimonialsCarousel {
     startContinuousScroll() {
         const animate = () => {
             if (!this.isDragging && !this.isHovered) {
-                const maxScroll = -((this.cards.length - 1) * (this.cards[0].offsetWidth + 32));
                 this.currentTranslate -= this.autoScrollSpeed;
                 
-                // Reset to start when reaching the end
-                if (this.currentTranslate <= maxScroll) {
-                    this.currentTranslate = 0;
+                // Check if we need to reset position for infinite loop
+                const totalWidth = this.cardWidth * this.cards.length;
+                if (Math.abs(this.currentTranslate) >= totalWidth) {
+                    this.currentTranslate += totalWidth;
                 }
                 
                 this.prevTranslate = this.currentTranslate;
@@ -160,20 +165,27 @@ class TestimonialsCarousel {
     }
 
     scrollToNext() {
-        const cardWidth = this.cards[0].offsetWidth + 32;
-        const maxScroll = -(cardWidth * (this.cards.length - 1));
-        if(this.currentTranslate > maxScroll) {
-            this.scrollToPosition(this.currentTranslate - cardWidth);
-        } else {
-            this.scrollToPosition(0);
+        const totalWidth = this.cardWidth * this.cards.length;
+        this.currentTranslate -= this.cardWidth;
+        
+        if (Math.abs(this.currentTranslate) >= totalWidth) {
+            this.currentTranslate += totalWidth;
         }
+        
+        this.prevTranslate = this.currentTranslate;
+        this.setSliderPosition();
     }
 
     scrollToPrev() {
-        const cardWidth = this.cards[0].offsetWidth + 32;
-        if(this.currentTranslate < 0) {
-            this.scrollToPosition(this.currentTranslate + cardWidth);
+        this.currentTranslate += this.cardWidth;
+        const totalWidth = this.cardWidth * this.cards.length;
+        
+        if (this.currentTranslate > 0) {
+            this.currentTranslate -= totalWidth;
         }
+        
+        this.prevTranslate = this.currentTranslate;
+        this.setSliderPosition();
     }
 }
 
