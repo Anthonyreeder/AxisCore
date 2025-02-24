@@ -515,6 +515,8 @@ section {
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .effect-name {
@@ -597,4 +599,28 @@ section {
     .particle-container {
         height: 300px;
     }
+}
+
+#digital-ecosystem {
+    background: #000033;
+}
+
+#neural-network {
+    background: #001100;
+}
+
+#code-story {
+    background: #001a00;
+}
+
+#quantum-field {
+    background: #1a0033;
+}
+
+.particle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 } 
