@@ -217,16 +217,16 @@ particlesJS("particles-atomic", {
 
 // Wait for DOM to load
 document.addEventListener("DOMContentLoaded", function() {
-    // Digital Ecosystem
-    particlesJS("digital-ecosystem", {
+    // Initialize main background particles
+    particlesJS("particles-js", {
         particles: {
-            number: { value: 80 },
-            color: { value: ["#ff0000", "#00ff00", "#0000ff"] },
+            number: { value: 100 },
+            color: { value: "#ffffff" },
             shape: { type: "circle" },
             opacity: {
                 value: 0.6,
                 random: true,
-                anim: { enable: true, speed: 0.5, opacity_min: 0.1 }
+                anim: { enable: true, speed: 0.8, opacity_min: 0.2 }
             },
             size: {
                 value: 3,
@@ -235,16 +235,17 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             line_linked: {
                 enable: true,
-                distance: 100,
+                distance: 150,
                 color: "#ffffff",
-                opacity: 0.4,
+                opacity: 0.3,
                 width: 1
             },
             move: {
                 enable: true,
-                speed: 2,
+                speed: 1.5,
                 direction: "none",
                 random: true,
+                straight: false,
                 out_mode: "bounce",
                 bounce: true,
                 attract: { enable: true, rotateX: 600, rotateY: 1200 }
@@ -253,121 +254,107 @@ document.addEventListener("DOMContentLoaded", function() {
         interactivity: {
             detect_on: "canvas",
             events: {
-                onhover: { enable: true, mode: "repulse" },
+                onhover: { enable: true, mode: "grab" },
                 onclick: { enable: true, mode: "push" },
                 resize: true
-            }
-        }
-    });
-
-    // Neural Network
-    particlesJS("neural-network", {
-        particles: {
-            number: { value: 100 },
-            color: { value: "#00ff00" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5 },
-            size: { value: 3 },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#00ff00",
-                opacity: 0.4,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                straight: false,
-                attract: { enable: true, rotateX: 600, rotateY: 1200 }
-            }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: { enable: true, mode: "grab" },
-                onclick: { enable: true, mode: "push" }
             },
             modes: {
-                grab: { distance: 200, line_linked: { opacity: 1 } }
+                grab: { distance: 200, line_linked: { opacity: 0.8 } }
             }
-        }
+        },
+        retina_detect: true
     });
 
-    // Code Story
-    particlesJS("code-story", {
-        particles: {
-            number: { value: 50 },
-            color: { value: "#00ff00" },
-            shape: {
-                type: "character",
-                character: {
-                    value: ["</>", "{ }", "[]", "//"],
-                    font: "Courier New",
-                    weight: "400"
+    // Initialize showcase effects
+    const effects = {
+        "digital-ecosystem": {
+            particles: {
+                number: { value: 80 },
+                color: { value: ["#ff0000", "#00ff00", "#0000ff"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.6, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 100,
+                    color: "#ffffff",
+                    opacity: 0.4
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    out_mode: "bounce"
                 }
-            },
-            size: { value: 16 },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#00ff00",
-                opacity: 0.4
-            },
-            move: {
-                enable: true,
-                speed: 2,
-                direction: "none",
-                random: true
             }
         },
-        interactivity: {
-            events: {
-                onhover: { enable: true, mode: "bubble" },
-                onclick: { enable: true, mode: "repulse" }
+        "neural-network": {
+            particles: {
+                number: { value: 100 },
+                color: { value: "#00ff00" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00ff00",
+                    opacity: 0.4
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none"
+                }
+            }
+        },
+        "code-story": {
+            particles: {
+                number: { value: 50 },
+                color: { value: "#00ff00" },
+                shape: { type: "circle" },
+                opacity: { value: 0.8 },
+                size: { value: 4 },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00ff00",
+                    opacity: 0.4
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true
+                }
+            }
+        },
+        "quantum-field": {
+            particles: {
+                number: { value: 100 },
+                color: { value: ["#ff00ff", "#00ffff", "#ffff00"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.6, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ffffff",
+                    opacity: 0.2
+                },
+                move: {
+                    enable: true,
+                    speed: 3,
+                    direction: "none",
+                    random: true
+                }
             }
         }
-    });
+    };
 
-    // Quantum Field
-    particlesJS("quantum-field", {
-        particles: {
-            number: { value: 100 },
-            color: { value: ["#ff00ff", "#00ffff", "#ffff00"] },
-            shape: { type: "circle" },
-            opacity: {
-                value: 0.6,
-                random: true,
-                anim: { enable: true, speed: 1, opacity_min: 0.1 }
-            },
-            size: {
-                value: 3,
-                random: true,
-                anim: { enable: true, speed: 4, size_min: 0.3 }
-            },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#ffffff",
-                opacity: 0.2
-            },
-            move: {
-                enable: true,
-                speed: 3,
-                direction: "none",
-                random: true,
-                attract: { enable: true, rotateX: 600, rotateY: 1200 }
-            }
-        },
-        interactivity: {
-            events: {
-                onhover: { enable: true, mode: "bubble" },
-                onclick: { enable: true, mode: "push" }
-            },
-            modes: {
-                bubble: { distance: 200, size: 6, duration: 0.4 }
-            }
-        }
+    // Initialize each effect
+    Object.keys(effects).forEach(id => {
+        particlesJS(id, effects[id]);
     });
 }); 
