@@ -1,123 +1,161 @@
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #3498db;
-    --text-color: #333;
-    --light-bg: #f8f9fa;
+    --primary-color: #2563eb;  /* Blue color similar to Mindbees */
+    --secondary-color: #1e40af;
+    --text-color: #1f2937;
+    --light-bg: #f8fafc;
+    --gradient-start: #2563eb;
+    --gradient-end: #1e40af;
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     color: var(--text-color);
+    background-color: var(--light-bg);
+}
+
+/* Hero Section with Gradient */
+.hero {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    padding: 8rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero .tagline {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.service-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 /* Navigation */
 nav {
+    background: white;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background-color: var(--primary-color);
-    color: white;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
 nav ul {
     display: flex;
+    gap: 2rem;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    margin-left: 2rem;
-}
-
 nav ul li a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
+    font-weight: 500;
     transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
-/* Hero Section */
-.hero {
+/* Sections */
+section {
+    padding: 5rem 2rem;
+}
+
+.section-title {
     text-align: center;
-    padding: 4rem 2rem;
-    background-color: var(--light-bg);
-}
-
-.hero h1 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.tagline {
-    font-size: 1.2rem;
-    color: #666;
-}
-
-/* Services Section */
-#services {
-    padding: 4rem 2rem;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.service-card {
-    padding: 1.5rem;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Main Content */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin-bottom: 3rem;
+    color: var(--text-color);
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: var(--primary-color);
+    background: var(--primary-color);
     color: white;
-    margin-top: 2rem;
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero .tagline {
+        font-size: 1.2rem;
+    }
+    
     nav {
+        padding: 1rem;
+    }
+    
+    .nav-container {
         flex-direction: column;
-        text-align: center;
-    }
-
-    nav ul {
-        margin-top: 1rem;
-    }
-
-    nav ul li {
-        margin: 0 1rem;
+        gap: 1rem;
     }
 } 
