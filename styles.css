@@ -1,78 +1,25 @@
 :root {
-    --primary-color: #2563eb;  /* Blue color similar to Mindbees */
-    --secondary-color: #1e40af;
-    --text-color: #1f2937;
+    --primary-color: #0047AB;  /* Mindbees blue */
+    --secondary-color: #00308F;
+    --text-color: #333;
     --light-bg: #f8fafc;
-    --gradient-start: #2563eb;
-    --gradient-end: #1e40af;
+    --gradient-start: #0047AB;
+    --gradient-end: #00308F;
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     color: var(--text-color);
-    background-color: var(--light-bg);
-}
-
-/* Hero Section with Gradient */
-.hero {
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    color: white;
-    padding: 8rem 2rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-}
-
-.hero .tagline {
-    font-size: 1.5rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Services Grid */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    padding: 4rem 2rem;
-    background: white;
-}
-
-.service-card {
-    background: white;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-}
-
-.service-card h3 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    background-color: white;
 }
 
 /* Navigation */
 nav {
     background: white;
     padding: 1rem 5%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
@@ -80,64 +27,124 @@ nav {
 }
 
 .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
+.logo img {
+    height: 40px;
 }
 
-nav ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.services-dropdown {
+    position: relative;
 }
 
-nav ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 4px;
 }
 
-nav ul li a:hover {
-    color: var(--primary-color);
+.services-dropdown:hover .dropdown-content {
+    display: block;
 }
 
-/* Sections */
-section {
-    padding: 5rem 2rem;
-}
-
-.section-title {
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    padding: 120px 5%;
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--text-color);
+    margin-top: 60px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+/* Services Section */
+.services {
+    padding: 5rem 5%;
+}
+
+.cloud-grid, .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.cloud-card, .industry-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.cloud-card:hover, .industry-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Courses Section */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 2rem 5%;
+}
+
+.course-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.course-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 /* Footer */
 footer {
     background: var(--primary-color);
     color: white;
-    padding: 3rem 2rem;
-    margin-top: 4rem;
+    padding: 4rem 5% 2rem;
 }
 
 .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Responsive Design */
@@ -146,16 +153,12 @@ footer {
         font-size: 2.5rem;
     }
     
-    .hero .tagline {
-        font-size: 1.2rem;
-    }
-    
-    nav {
-        padding: 1rem;
-    }
-    
     .nav-container {
         flex-direction: column;
         gap: 1rem;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
     }
 } 
