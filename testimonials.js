@@ -6,21 +6,34 @@ class TestimonialsCarousel {
         this.prevButton = document.querySelector('.carousel-arrow.prev');
         this.nextButton = document.querySelector('.carousel-arrow.next');
         
+        // Verify elements are found
+        if (!this.prevButton || !this.nextButton) {
+            console.error('Navigation buttons not found');
+            return;
+        }
+
         this.isDragging = false;
         this.startPos = 0;
         this.currentTranslate = 0;
         this.prevTranslate = 0;
         this.animationID = 0;
-        this.autoScrollSpeed = 1; // Increased speed
+        this.autoScrollSpeed = 0.5; // Reduced speed a bit
         this.isHovered = false;
         
         this.init();
     }
 
     init() {
-        // Manual controls
-        this.prevButton.addEventListener('click', () => this.scrollToPrev());
-        this.nextButton.addEventListener('click', () => this.scrollToNext());
+        // Manual controls with direct function calls
+        this.prevButton.onclick = () => {
+            console.log('Previous clicked');
+            this.scrollToPrev();
+        };
+        
+        this.nextButton.onclick = () => {
+            console.log('Next clicked');
+            this.scrollToNext();
+        };
 
         // Mouse wheel scrolling
         this.container.addEventListener('wheel', (e) => {
@@ -146,6 +159,8 @@ class TestimonialsCarousel {
     }
 }
 
+// Make sure the DOM is loaded before initializing
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Initializing carousel...');
     new TestimonialsCarousel();
 }); 
