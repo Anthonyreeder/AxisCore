@@ -14,7 +14,28 @@ class PortfolioField {
                     impact: 'Reduced lead response time by 80%'
                 }
             },
-            // Add more projects
+            {
+                id: 'project2',
+                position: { x: 0.7, y: 0.3 },
+                title: 'Einstein Analytics Suite',
+                description: 'Custom dashboard implementation for financial services with real-time metrics',
+                details: {
+                    tech: ['Einstein Analytics', 'Apex', 'Custom Dashboards'],
+                    duration: '4 months',
+                    impact: 'Improved decision-making time by 60%'
+                }
+            },
+            {
+                id: 'project3',
+                position: { x: 0.5, y: 0.6 },
+                title: 'Multi-Platform Integration',
+                description: 'Seamless integration between Salesforce, Xero, and HubSpot for unified data flow',
+                details: {
+                    tech: ['Integration APIs', 'Middleware', 'Custom Sync Logic'],
+                    duration: '3 months',
+                    impact: 'Eliminated 20 hours of manual work weekly'
+                }
+            }
         ];
         
         this.nodes = [];
@@ -54,20 +75,40 @@ class PortfolioField {
                 connections: []
             });
         }
+
+        // Add velocity to nodes
+        this.nodes.forEach(node => {
+            node.vx = (Math.random() - 0.5) * 0.5;
+            node.vy = (Math.random() - 0.5) * 0.5;
+        });
     }
 
     drawNode(node) {
+        // Increase node size
+        const baseRadius = node.project ? 8 : 3;
+        
+        // Glow effect
+        if(node.project) {
+            this.ctx.beginPath();
+            this.ctx.arc(node.x, node.y, baseRadius + 5, 0, Math.PI * 2);
+            this.ctx.fillStyle = 'rgba(0, 255, 242, 0.1)';
+            this.ctx.fill();
+        }
+
+        // Main node
         this.ctx.beginPath();
-        this.ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        this.ctx.arc(node.x, node.y, baseRadius, 0, Math.PI * 2);
         this.ctx.fillStyle = node.project ? 
             'rgba(0, 255, 242, 0.8)' : 
             'rgba(0, 255, 242, 0.3)';
         this.ctx.fill();
 
+        // Highlight active node
         if(node === this.activeNode) {
             this.ctx.beginPath();
-            this.ctx.arc(node.x, node.y, node.radius + 10, 0, Math.PI * 2);
+            this.ctx.arc(node.x, node.y, baseRadius + 12, 0, Math.PI * 2);
             this.ctx.strokeStyle = 'rgba(0, 255, 242, 0.2)';
+            this.ctx.lineWidth = 2;
             this.ctx.stroke();
         }
     }
@@ -75,6 +116,18 @@ class PortfolioField {
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
+        // Update positions
+        this.nodes.forEach(node => {
+            if (!node.project) { // Only move non-project nodes
+                node.x += node.vx;
+                node.y += node.vy;
+                
+                // Bounce off edges
+                if (node.x < 0 || node.x > this.canvas.width) node.vx *= -1;
+                if (node.y < 0 || node.y > this.canvas.height) node.vy *= -1;
+            }
+        });
+
         // Draw connections
         this.nodes.forEach(node => {
             this.nodes.forEach(otherNode => {
