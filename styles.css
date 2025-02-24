@@ -1109,7 +1109,7 @@ section {
 
 .benefit-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 1rem;
 }
@@ -1332,4 +1332,24 @@ section {
 
 .sf-logo-container::after {
     right: 0;
+}
+
+/* Add new styles for the official logo */
+.sf-official-logo {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 10;
+}
+
+.sf-official-logo img {
+    height: 40px;
+    width: auto;
+    filter: brightness(0) invert(1); /* Makes the logo white */
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.sf-official-logo img:hover {
+    opacity: 1;
 } 
