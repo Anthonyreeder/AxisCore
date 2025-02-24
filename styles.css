@@ -1042,4 +1042,46 @@ section {
 .scroll-dot.active {
     background: var(--quantum-primary);
     transform: scale(1.2);
+}
+
+/* Add/update these styles */
+.testimonials-container {
+    position: relative; /* Ensure this is set for absolute positioning of arrows */
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none; /* Allow clicking through the container */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.carousel-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 255, 242, 0.1);
+    border: 1px solid rgba(0, 255, 242, 0.2);
+    color: var(--quantum-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    pointer-events: auto; /* Re-enable clicking on buttons */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 255, 242, 0.2);
+    transform: scale(1.1);
+}
+
+.testimonials-track {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 } 

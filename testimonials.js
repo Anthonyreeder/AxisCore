@@ -9,6 +9,8 @@ class TestimonialsCarousel {
         this.currentTranslate = 0;
         this.prevTranslate = 0;
         this.animationID = 0;
+        this.autoScrollSpeed = 0.5; // Pixels per frame
+        this.isHovered = false;
         
         this.init();
     }
@@ -23,12 +25,34 @@ class TestimonialsCarousel {
             dotsContainer.appendChild(dot);
         });
 
+        // Manual controls
+        document.querySelector('.carousel-arrow.prev').addEventListener('click', () => this.scrollToPrev());
+        document.querySelector('.carousel-arrow.next').addEventListener('click', () => this.scrollToNext());
+
+        // Mouse wheel scrolling
+        this.container.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = Math.sign(e.deltaX || e.deltaY) * 50;
+            this.currentTranslate = Math.max(
+                Math.min(this.currentTranslate - delta, 0),
+                -((this.cards.length - 1) * (this.cards[0].offsetWidth + 32))
+            );
+            this.prevTranslate = this.currentTranslate;
+            this.setSliderPosition();
+            this.updateDots();
+            this.updateProgress();
+        });
+
+        // Hover detection
+        this.container.addEventListener('mouseenter', () => this.isHovered = true);
+        this.container.addEventListener('mouseleave', () => this.isHovered = false);
+
         // Touch events
         this.track.addEventListener('touchstart', this.touchStart.bind(this));
         this.track.addEventListener('touchmove', this.touchMove.bind(this));
         this.track.addEventListener('touchend', this.touchEnd.bind(this));
 
-        // Mouse events
+        // Mouse drag events
         this.track.addEventListener('mousedown', this.touchStart.bind(this));
         this.track.addEventListener('mousemove', this.touchMove.bind(this));
         this.track.addEventListener('mouseup', this.touchEnd.bind(this));
@@ -43,8 +67,8 @@ class TestimonialsCarousel {
             }
         };
 
-        // Auto scroll
-        this.startAutoScroll();
+        // Start continuous scroll
+        this.startContinuousScroll();
     }
 
     touchStart(e) {
@@ -118,10 +142,26 @@ class TestimonialsCarousel {
         document.querySelector('.scroll-progress').style.setProperty('--scroll-percent', `${progress}%`);
     }
 
-    startAutoScroll() {
-        setInterval(() => {
-            if(!this.isDragging) this.scrollToNext();
-        }, 5000);
+    startContinuousScroll() {
+        const animate = () => {
+            if (!this.isDragging && !this.isHovered) {
+                const maxScroll = -((this.cards.length - 1) * (this.cards[0].offsetWidth + 32));
+                this.currentTranslate -= this.autoScrollSpeed;
+                
+                // Reset to start when reaching the end
+                if (this.currentTranslate <= maxScroll) {
+                    this.currentTranslate = 0;
+                }
+                
+                this.prevTranslate = this.currentTranslate;
+                this.setSliderPosition();
+                this.updateDots();
+                this.updateProgress();
+            }
+            requestAnimationFrame(animate);
+        };
+        
+        requestAnimationFrame(animate);
     }
 
     scrollToNext() {
