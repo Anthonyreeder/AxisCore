@@ -136,6 +136,44 @@ nav {
     font-size: 1.1rem;
 }
 
+/* Add this after the solutions section */
+.content-card {
+    background: rgba(0, 35, 85, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin: 4rem 5%;
+    padding: 4rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-card section {
+    margin-bottom: 5rem;
+}
+
+.content-card section:last-child {
+    margin-bottom: 0;
+}
+
+.content-card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.content-card h3 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    color: var(--text-color);
+}
+
+.content-card p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
 /* Services Section */
 .section-title {
     font-size: 2.5rem;
@@ -233,6 +271,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .tech-tags span {
@@ -240,12 +279,12 @@ nav {
     padding: 0.8rem 1.5rem;
     border-radius: 6px;
     font-size: 1.1rem;
-    backdrop-filter: blur(5px);
     transition: transform 0.3s ease;
 }
 
 .tech-tags span:hover {
     transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Case Studies Section */
@@ -277,6 +316,7 @@ nav {
     margin: 3rem auto;
     display: grid;
     gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .contact-form input,
@@ -386,6 +426,19 @@ footer {
     
     .service-card {
         padding: 1.5rem;
+    }
+    
+    .content-card {
+        padding: 2rem;
+        margin: 2rem;
+    }
+    
+    .content-card h2 {
+        font-size: 2rem;
+    }
+    
+    .content-card h3 {
+        font-size: 1.5rem;
     }
 }
 
