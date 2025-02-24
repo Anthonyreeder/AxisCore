@@ -32,24 +32,25 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 1.5rem 5%;
     position: relative;
     z-index: 2;
 }
 
 .logo {
-    color: var(--primary-color);
-    font-size: 1.8rem;
+    color: var(--text-color);
+    font-size: 2rem;
     font-weight: 700;
     text-decoration: none;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     list-style: none;
     margin: 0;
     padding: 0;
+    margin-left: auto;
 }
 
 .nav-links a {
@@ -66,62 +67,73 @@ nav {
 /* Hero Section */
 .hero {
     text-align: center;
-    padding: 8rem 2rem;
+    padding: 12rem 2rem 8rem;
     position: relative;
     z-index: 2;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     line-height: 1.2;
 }
 
 .tagline {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
 }
 
 .section-subtitle {
-    font-size: 1.2rem;
-    opacity: 0.8;
+    font-size: 1.4rem;
+    opacity: 0.85;
+    margin-top: 2rem;
 }
 
 /* Solutions Section */
 #solutions {
-    padding: 4rem 5%;
+    padding: 6rem 5%;
     position: relative;
     z-index: 2;
 }
 
 #solutions h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-color);
 }
 
 .solutions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .solution-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 8px;
-    backdrop-filter: blur(5px);
+    background: rgba(0, 35, 85, 0.4);
+    padding: 2.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.solution-card:hover {
+    transform: translateY(-5px);
 }
 
 .solution-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
 }
 
 .solution-card p {
     opacity: 0.9;
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 1.1rem;
 }
 
 /* Services Section */
