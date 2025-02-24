@@ -15,7 +15,42 @@
     top: 0;
     left: 0;
     z-index: 1;
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    background: linear-gradient(135deg, 
+        rgba(0, 71, 171, 0.95), 
+        rgba(0, 35, 85, 0.95),
+        rgba(0, 20, 60, 0.95)
+    );
+}
+
+/* Add subtle radial gradient overlays */
+#particles-js::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 30% 30%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
+#particles-js::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 70% 70%,
+        rgba(0, 150, 255, 0.1) 0%,
+        transparent 60%
+    );
+    pointer-events: none;
 }
 
 body {
