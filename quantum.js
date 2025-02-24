@@ -4,7 +4,7 @@ class QuantumExperience {
         this.states = document.querySelectorAll('.quantum-state');
         this.ctx = this.initQuantumField();
         this.particles = [];
-        this.entangledPairs = [];
+        this.lastTime = 0;
         
         this.init();
     }
@@ -17,54 +17,68 @@ class QuantumExperience {
         return canvas.getContext('2d');
     }
 
-    createParticle() {
+    createParticle(x, y) {
         return {
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            size: Math.random() * 2 + 1,
-            speedX: (Math.random() - 0.5) * 2,
-            speedY: (Math.random() - 0.5) * 2,
-            entangled: null,
-            phase: Math.random() * Math.PI * 2
+            x: x || Math.random() * window.innerWidth,
+            y: y || Math.random() * window.innerHeight,
+            size: 2,
+            speedX: (Math.random() - 0.5) * 1,
+            speedY: (Math.random() - 0.5) * 1,
+            life: 1,
+            color: `hsla(${180 + Math.random() * 30}, 100%, 70%, `,
+            connections: []
         };
     }
 
-    createEntangledPair() {
-        const p1 = this.createParticle();
-        const p2 = this.createParticle();
-        p1.entangled = p2;
-        p2.entangled = p1;
-        this.entangledPairs.push([p1, p2]);
-    }
+    animate(timestamp) {
+        const deltaTime = timestamp - this.lastTime;
+        this.lastTime = timestamp;
 
-    animate() {
-        this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        this.ctx.fillStyle = 'rgba(0, 255, 242, 0.5)';
+        this.ctx.fillStyle = 'rgba(0, 8, 20, 0.1)';
+        this.ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
-        // Update and draw quantum particles
+        // Update and draw particles
+        this.particles = this.particles.filter(p => p.life > 0);
+        
         this.particles.forEach(p => {
             p.x += p.speedX;
             p.y += p.speedY;
-            p.phase += 0.05;
+            p.life -= 0.003;
 
+            // Bounce off edges
             if(p.x < 0 || p.x > window.innerWidth) p.speedX *= -1;
             if(p.y < 0 || p.y > window.innerHeight) p.speedY *= -1;
 
+            // Draw particle
             this.ctx.beginPath();
-            this.ctx.arc(p.x, p.y, p.size * Math.sin(p.phase), 0, Math.PI * 2);
+            this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            this.ctx.fillStyle = p.color + p.life + ')';
             this.ctx.fill();
 
-            // Draw entanglement lines
-            if(p.entangled) {
-                this.ctx.beginPath();
-                this.ctx.strokeStyle = 'rgba(0, 255, 242, 0.2)';
-                this.ctx.moveTo(p.x, p.y);
-                this.ctx.lineTo(p.entangled.x, p.entangled.y);
-                this.ctx.stroke();
-            }
+            // Connect nearby particles
+            this.particles.forEach(p2 => {
+                if(p !== p2) {
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if(distance < 100) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(p.x, p.y);
+                        this.ctx.lineTo(p2.x, p2.y);
+                        this.ctx.strokeStyle = `rgba(0, 255, 242, ${0.2 * Math.min(p.life, p2.life)})`;
+                        this.ctx.stroke();
+                    }
+                }
+            });
         });
 
-        requestAnimationFrame(() => this.animate());
+        // Add new particles occasionally
+        if(Math.random() < 0.1) {
+            this.particles.push(this.createParticle());
+        }
+
+        requestAnimationFrame((t) => this.animate(t));
     }
 
     handleScroll() {
@@ -72,34 +86,31 @@ class QuantumExperience {
             const rect = state.getBoundingClientRect();
             if(rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3) {
                 state.querySelector('.superposition')?.classList.add('collapsed');
-                this.createQuantumEffect(state);
+                
+                // Create particles around the visible element
+                for(let i = 0; i < 10; i++) {
+                    const x = rect.left + Math.random() * rect.width;
+                    const y = rect.top + Math.random() * rect.height;
+                    this.particles.push(this.createParticle(x, y));
+                }
             }
         });
     }
 
-    createQuantumEffect(element) {
-        const rect = element.getBoundingClientRect();
-        for(let i = 0; i < 5; i++) {
-            const particle = this.createParticle();
-            particle.x = rect.left + Math.random() * rect.width;
-            particle.y = rect.top + Math.random() * rect.height;
-            this.particles.push(particle);
-        }
-        this.createEntangledPair();
-    }
-
     init() {
-        for(let i = 0; i < 50; i++) {
+        // Initial particles
+        for(let i = 0; i < 30; i++) {
             this.particles.push(this.createParticle());
-        }
-        for(let i = 0; i < 10; i++) {
-            this.createEntangledPair();
         }
         
         window.addEventListener('scroll', () => this.handleScroll());
-        window.addEventListener('resize', () => this.initQuantumField());
+        window.addEventListener('resize', () => {
+            const canvas = this.ctx.canvas;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
         
-        this.animate();
+        requestAnimationFrame((t) => this.animate(t));
     }
 }
 
