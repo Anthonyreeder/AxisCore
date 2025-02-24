@@ -4,7 +4,7 @@ class PortfolioField {
         this.ctx = this.canvas.getContext('2d');
         this.discoveredProjects = new Set();
         this.currentDiscoverable = 'project1';
-        this.chimeSound = new Audio('path/to/chime.mp3'); // We'll need to add this sound file
+        this.chimeSound = new Audio('node-discover.mp3'); // Updated sound file name
         
         this.projects = [
             {
@@ -230,51 +230,40 @@ class PortfolioField {
         this.addTrail(x, y);
         this.updateNodePositions(x, y);
 
+        // Only highlight discoverable node, don't show details
         let hoveredNode = null;
         this.nodes.forEach(node => {
-            const dx = x - node.x;
-            const dy = y - node.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if(distance < 30 && node.project) {
-                hoveredNode = node;
+            if(node.project && node.project.id === this.currentDiscoverable) {
+                const dx = x - node.x;
+                const dy = y - node.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if(distance < 30) {
+                    hoveredNode = node;
+                }
             }
         });
 
-        if(hoveredNode !== this.activeNode) {
-            this.activeNode = hoveredNode;
-            this.updateProjectDetails();
-        }
+        this.activeNode = hoveredNode;
     }
 
-    updateProjectDetails() {
-        const details = document.querySelector('.project-details');
-        const navItems = document.querySelectorAll('.portfolio-item');
-
-        if(this.activeNode && this.activeNode.project) {
-            details.innerHTML = `
-                <h3>${this.activeNode.project.title}</h3>
-                <p>${this.activeNode.project.description}</p>
-                <div class="project-stats">
-                    <div>Technologies: ${this.activeNode.project.details.tech.join(', ')}</div>
-                    <div>Duration: ${this.activeNode.project.details.duration}</div>
-                    <div>Impact: ${this.activeNode.project.details.impact}</div>
-                </div>
-            `;
-            details.classList.add('visible');
-
-            // Update sidebar
-            navItems.forEach(item => {
-                if(item.dataset.project === this.activeNode.project.id) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        } else {
-            details.classList.remove('visible');
-            navItems.forEach(item => item.classList.remove('active'));
+    updateProjectDetails(project) {
+        // Only show details if project is discovered
+        if(!project || !this.discoveredProjects.has(project.id)) {
+            return;
         }
+
+        const details = document.querySelector('.project-details');
+        details.innerHTML = `
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="project-stats">
+                <div>Technologies: ${project.details.tech.join(', ')}</div>
+                <div>Duration: ${project.details.duration}</div>
+                <div>Impact: ${project.details.impact}</div>
+            </div>
+        `;
+        details.classList.add('visible');
     }
 
     handleClick(e) {
@@ -322,9 +311,11 @@ class PortfolioField {
             if(isDiscovered) {
                 item.classList.add('discovered');
                 item.querySelector('h3').textContent = this.projects.find(p => p.id === projectId).title;
+                item.querySelector('.preview-text').style.display = 'block';
             } else {
                 item.classList.toggle('next', isNext);
                 item.querySelector('h3').textContent = '???? ????';
+                item.querySelector('.preview-text').style.display = 'none';
             }
         });
     }
