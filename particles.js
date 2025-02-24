@@ -1,7 +1,7 @@
 particlesJS("particles-js", {
   particles: {
     number: {
-      value: 80,
+      value: 100,
       density: {
         enable: true,
         value_area: 800
@@ -14,7 +14,7 @@ particlesJS("particles-js", {
       type: "circle",
     },
     opacity: {
-      value: 0.5,
+      value: 0.7,
       random: false,
       anim: {
         enable: false,
@@ -24,7 +24,7 @@ particlesJS("particles-js", {
       }
     },
     size: {
-      value: 3,
+      value: 4,
       random: true,
       anim: {
         enable: false,
@@ -37,12 +37,12 @@ particlesJS("particles-js", {
       enable: true,
       distance: 150,
       color: "#ffffff",
-      opacity: 0.4,
-      width: 1
+      opacity: 0.5,
+      width: 1.5
     },
     move: {
       enable: true,
-      speed: 6,
+      speed: 3,
       direction: "none",
       random: false,
       straight: false,
@@ -70,7 +70,7 @@ particlesJS("particles-js", {
     },
     modes: {
       repulse: {
-        distance: 100,
+        distance: 150,
         duration: 0.4
       },
       push: {
