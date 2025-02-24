@@ -1600,4 +1600,87 @@ select.quantum-input {
 .project-details.visible {
     transform: translateY(0);
     opacity: 1;
+}
+
+/* Update portfolio text styles */
+.portfolio-sidebar h2 {
+    font-size: 2rem;
+    color: var(--quantum-primary);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(0, 255, 242, 0.3),
+                 0 0 30px rgba(0, 255, 242, 0.2);
+    letter-spacing: 1px;
+}
+
+.portfolio-item h3 {
+    color: var(--quantum-primary);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 10px rgba(0, 255, 242, 0.4);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Add hover effect for items */
+.portfolio-item:hover h3 {
+    transform: translateX(10px);
+    text-shadow: 0 0 15px rgba(0, 255, 242, 0.6),
+                 0 0 30px rgba(0, 255, 242, 0.3);
+}
+
+/* Style the preview text */
+.preview-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(0, 255, 242, 0.3);
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover .preview-text {
+    border-left-color: var(--quantum-primary);
+    background: linear-gradient(90deg, 
+        rgba(0, 255, 242, 0.1) 0%,
+        transparent 100%
+    );
+}
+
+/* Style project details popup */
+.project-details {
+    background: rgba(0, 8, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 242, 0.2);
+    box-shadow: 0 0 30px rgba(0, 255, 242, 0.1);
+}
+
+.project-details h3 {
+    font-size: 1.4rem;
+    color: var(--quantum-primary);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(0, 255, 242, 0.4);
+}
+
+.project-details p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-stats {
+    display: grid;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 255, 242, 0.2);
+}
+
+.project-stats div {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.project-stats div strong {
+    color: var(--quantum-primary);
+    margin-right: 0.5rem;
 } 
