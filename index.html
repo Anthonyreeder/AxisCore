@@ -3,179 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AxisCore - Enterprise Technology Solutions</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <title>AxisCore - Interactive Experience</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            min-height: 500vh;  /* Make page scrollable */
+            font-family: 'Inter', sans-serif;
+            color: white;
+        }
+
+        .light-bar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #fff, transparent);
+            filter: blur(1px);
+            pointer-events: none;
+        }
+
+        .content-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            opacity: 0;
+            transition: opacity 0.5s;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .note {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        #progress-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+
+        #progress-bar {
+            position: absolute;
+            width: 100%;
+            background: white;
+            bottom: 0;
+            border-radius: 3px;
+            transition: height 0.1s ease;
+        }
+    </style>
 </head>
 <body>
-    <div id="particles-js"></div>
+    <div id="progress-indicator">
+        <div id="progress-bar"></div>
+    </div>
     
-    <canvas id="lightshow"></canvas>
-    
-    <header>
-        <nav>
-            <a href="#" class="logo">AxisCore</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#solutions">Solutions</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#case-studies">Case Studies</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <section class="content-section">Welcome to AxisCore</section>
+    <section class="content-section">Transforming Ideas</section>
+    <section class="content-section">Into Digital Reality</section>
+    <section class="content-section">Innovation Driven</section>
+    <section class="content-section">Let's Build Together</section>
 
-    <main>
-        <section id="home" class="hero">
-            <h1>Enterprise Solutions<br>Powered by Innovation</h1>
-            <p class="tagline">Transforming businesses through custom technology solutions,<br>Salesforce expertise, and seamless integrations</p>
-            <p class="section-subtitle">End-to-end enterprise solutions tailored to your business needs</p>
-        </section>
-
-        <section id="solutions">
-            <h2>Our Solutions</h2>
-            <div class="solutions-grid">
-                <div class="solution-card">
-                    <h3>Salesforce Solutions</h3>
-                    <p>Custom Salesforce development, deployment, and support. Maximize your CRM investment with tailored solutions and seamless integrations.</p>
-                </div>
-                <div class="solution-card">
-                    <h3>System Integration</h3>
-                    <p>Connect your business systems seamlessly. We specialize in creating efficient, automated workflows across your technology stack.</p>
-                </div>
-                <div class="solution-card">
-                    <h3>Process Optimization</h3>
-                    <p>Streamline your operations with our business process consulting and automation solutions.</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="content-card">
-            <section id="expertise">
-                <h2>Our Expertise</h2>
+    <script>
+        class ScrollExperience {
+            constructor() {
+                this.lightBars = [];
+                this.notes = [];
+                this.lastScrollY = 0;
+                this.scrollVelocity = 0;
+                this.sections = document.querySelectorAll('.content-section');
                 
-                <h3>Technologies</h3>
-                <div class="tech-tags">
-                    <span>Salesforce</span>
-                    <span>REST APIs</span>
-                    <span>Node.js</span>
-                    <span>React</span>
-                    <span>AWS</span>
-                    <span>Azure</span>
-                </div>
+                this.init();
+                this.bindEvents();
+                this.animate();
+            }
 
-                <h3>Industries</h3>
-                <div class="tech-tags">
-                    <span>Financial Services</span>
-                    <span>Healthcare</span>
-                    <span>Manufacturing</span>
-                    <span>Retail</span>
-                    <span>Technology</span>
-                </div>
-            </section>
+            init() {
+                // Create light bars
+                for(let i = 0; i < 8; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'light-bar';
+                    bar.style.left = `${(i + 1) * (window.innerWidth / 9)}px`;
+                    document.body.appendChild(bar);
+                    this.lightBars.push(bar);
+                }
+            }
 
-            <section id="case-studies">
-                <h2>Success Stories</h2>
-                <p>Real solutions, real results</p>
-                <p>Case studies coming soon. Contact us to learn more about our successful implementations.</p>
-            </section>
+            createNote(x, y, hue) {
+                const note = document.createElement('div');
+                note.className = 'note';
+                note.style.left = `${x}px`;
+                note.style.top = `${y}px`;
+                note.style.width = '20px';
+                note.style.height = '20px';
+                note.style.background = `hsl(${hue}, 100%, 70%)`;
+                note.style.boxShadow = `0 0 20px hsl(${hue}, 100%, 70%)`;
+                document.body.appendChild(note);
+                
+                // Animate and remove
+                requestAnimationFrame(() => {
+                    note.style.opacity = '1';
+                    note.style.transform = 'scale(1.5) translateX(100px)';
+                });
+                
+                setTimeout(() => note.remove(), 1000);
+            }
 
-            <section id="contact">
-                <h2>Start Your Project</h2>
-                <p>Let's discuss how we can help transform your business</p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="tel" placeholder="Phone">
-                    <input type="text" placeholder="Company">
-                    <textarea placeholder="Tell us about your project requirements" rows="4" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </section>
-        </div>
-    </main>
+            updateProgress() {
+                const scrollProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                document.getElementById('progress-bar').style.height = `${scrollProgress * 100}%`;
+            }
 
-    <section id="particle-showcase">
-        <h2>Particle Effect Showcase</h2>
-        <div class="particle-grid">
-            <div class="particle-demo">
-                <div id="particles-blue" class="particle-container"></div>
-                <span class="effect-name">Ocean Waves</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-fire" class="particle-container"></div>
-                <span class="effect-name">Fire Storm</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-matrix" class="particle-container"></div>
-                <span class="effect-name">Matrix Rain</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-galaxy" class="particle-container"></div>
-                <span class="effect-name">Galaxy Spiral</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-crack" class="particle-container"></div>
-                <span class="effect-name">Screen Crack</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-snow" class="particle-container"></div>
-                <span class="effect-name">Snow Fall</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-neon" class="particle-container"></div>
-                <span class="effect-name">Neon Pulse</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-dna" class="particle-container"></div>
-                <span class="effect-name">DNA Helix</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-cyber" class="particle-container"></div>
-                <span class="effect-name">Cyber Grid</span>
-            </div>
-            <div class="particle-demo">
-                <div id="particles-atomic" class="particle-container"></div>
-                <span class="effect-name">Atomic Orbit</span>
-            </div>
-        </div>
-    </section>
+            handleScroll() {
+                const currentScroll = window.scrollY;
+                this.scrollVelocity = currentScroll - this.lastScrollY;
+                this.lastScrollY = currentScroll;
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-main">
-                <h3>AxisCore</h3>
-                <p>Enterprise technology solutions for tomorrow's challenges.</p>
-                <div class="contact-info">
-                    <p>Email: contact@axiscore.com</p>
-                    <p>Phone: (555) 123-4567</p>
-                </div>
-            </div>
-            <div class="footer-links">
-                <div class="footer-section">
-                    <h4>Solutions</h4>
-                    <ul>
-                        <li><a href="#salesforce">Salesforce Solutions</a></li>
-                        <li><a href="#integration">System Integration</a></li>
-                        <li><a href="#consulting">Process Optimization</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#case-studies">Case Studies</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 AxisCore. All rights reserved.</p>
-        </div>
-    </footer>
+                // Create notes based on scroll velocity
+                if(Math.abs(this.scrollVelocity) > 10) {
+                    this.lightBars.forEach((bar, i) => {
+                        const rect = bar.getBoundingClientRect();
+                        const hue = (i * 45 + currentScroll / 2) % 360;
+                        this.createNote(rect.left, window.innerHeight / 2, hue);
+                    });
+                }
 
-    <script src="particles.js"></script>
+                // Update light bars
+                this.lightBars.forEach((bar, i) => {
+                    const hue = (i * 45 + currentScroll / 2) % 360;
+                    bar.style.background = `linear-gradient(to bottom, 
+                        transparent,
+                        hsl(${hue}, 100%, 70%),
+                        transparent
+                    )`;
+                    bar.style.filter = `blur(${Math.abs(this.scrollVelocity) / 10}px)`;
+                });
+
+                // Update sections visibility
+                this.sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if(rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3) {
+                        section.style.opacity = '1';
+                    } else {
+                        section.style.opacity = '0';
+                    }
+                });
+
+                this.updateProgress();
+            }
+
+            bindEvents() {
+                window.addEventListener('scroll', () => this.handleScroll());
+                window.addEventListener('resize', () => this.init());
+            }
+
+            animate() {
+                // Add any continuous animations here
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize when document is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new ScrollExperience();
+        });
+    </script>
 </body>
 </html> 
