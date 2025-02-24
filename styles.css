@@ -1546,11 +1546,33 @@ select.quantum-input {
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1px solid transparent;
+    opacity: 0.5;
+    transition: all 0.5s ease;
 }
 
 .portfolio-item:hover, .portfolio-item.active {
     background: rgba(0, 255, 242, 0.05);
     border-color: rgba(0, 255, 242, 0.2);
+}
+
+.portfolio-item.next {
+    opacity: 1;
+    border-color: rgba(0, 255, 242, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.portfolio-item.discovered {
+    opacity: 1;
+    border-color: rgba(0, 255, 242, 0.2);
+}
+
+.portfolio-item:not(.next):not(.discovered) {
+    cursor: default;
+}
+
+@keyframes pulse {
+    0%, 100% { border-color: rgba(0, 255, 242, 0.3); }
+    50% { border-color: rgba(0, 255, 242, 0.8); }
 }
 
 .portfolio-item h3 {
@@ -1595,11 +1617,23 @@ select.quantum-input {
     transform: translateY(150%);
     transition: transform 0.3s ease;
     opacity: 0;
+    animation: fadeIn 1s ease;
 }
 
 .project-details.visible {
     transform: translateY(0);
     opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* Update portfolio text styles */

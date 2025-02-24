@@ -2,38 +2,45 @@ class PortfolioField {
     constructor() {
         this.canvas = document.getElementById('portfolio-field');
         this.ctx = this.canvas.getContext('2d');
+        this.discoveredProjects = new Set();
+        this.currentDiscoverable = 'project1';
+        this.chimeSound = new Audio('path/to/chime.mp3'); // We'll need to add this sound file
+        
         this.projects = [
             {
                 id: 'project1',
-                position: { x: 0.3, y: 0.4 }, // Relative positions (0-1)
-                title: 'Lead Distribution System',
-                description: 'AI-powered lead routing system that increased conversion rates by 45%',
+                position: { x: 0.3, y: 0.4 },
+                title: 'Intelligent Lead Distribution',
+                description: 'An AI-powered system that revolutionized lead distribution for a major insurance provider, resulting in a 45% increase in conversion rates. The system analyzes agent performance, expertise, and current workload to make intelligent routing decisions.',
                 details: {
-                    tech: ['Apex', 'Lightning Web Components', 'Einstein Analytics'],
-                    duration: '3 months',
-                    impact: 'Reduced lead response time by 80%'
+                    challenge: 'Manual lead distribution was causing delays and mismatches between lead types and agent expertise.',
+                    solution: 'Developed an intelligent routing system using Salesforce Einstein and custom algorithms.',
+                    impact: 'Reduced response time by 80% and improved customer satisfaction scores by 35%',
+                    tech: ['Salesforce Einstein', 'Custom Lightning Components', 'Advanced Apex Logic']
                 }
             },
             {
                 id: 'project2',
                 position: { x: 0.7, y: 0.3 },
-                title: 'Einstein Analytics Suite',
-                description: 'Custom dashboard implementation for financial services with real-time metrics',
+                title: 'Predictive Analytics Suite',
+                description: 'A comprehensive analytics platform that transformed financial forecasting for a leading investment firm. The system processes millions of data points to predict market trends and automate reporting.',
                 details: {
-                    tech: ['Einstein Analytics', 'Apex', 'Custom Dashboards'],
-                    duration: '4 months',
-                    impact: 'Improved decision-making time by 60%'
+                    challenge: 'Complex data analysis was taking weeks to process and interpret.',
+                    solution: 'Built a real-time analytics suite with predictive modeling capabilities.',
+                    impact: 'Reduced analysis time from weeks to minutes, with 92% prediction accuracy',
+                    tech: ['Einstein Analytics', 'Custom Dashboards', 'Automated Reporting']
                 }
             },
             {
                 id: 'project3',
                 position: { x: 0.5, y: 0.6 },
-                title: 'Multi-Platform Integration',
-                description: 'Seamless integration between Salesforce, Xero, and HubSpot for unified data flow',
+                title: 'Multi-System Integration Hub',
+                description: 'A centralized integration hub that seamlessly connects multiple enterprise systems, creating a unified data ecosystem that eliminated data silos and manual processes.',
                 details: {
-                    tech: ['Integration APIs', 'Middleware', 'Custom Sync Logic'],
-                    duration: '3 months',
-                    impact: 'Eliminated 20 hours of manual work weekly'
+                    challenge: 'Disconnected systems were causing data inconsistencies and manual work.',
+                    solution: 'Developed a central hub with bi-directional syncing and validation.',
+                    impact: 'Eliminated 40+ hours of weekly manual work and reduced errors by 95%',
+                    tech: ['MuleSoft', 'Custom APIs', 'Real-time Sync Engine']
                 }
             }
         ];
@@ -87,23 +94,32 @@ class PortfolioField {
     }
 
     drawNode(node) {
-        // Increase node size
         const baseRadius = node.project ? 8 : 3;
+        const isDiscoverable = node.project && node.project.id === this.currentDiscoverable;
+        const isDiscovered = node.project && this.discoveredProjects.has(node.project.id);
         
-        // Glow effect
-        if(node.project) {
+        // Glow effect for discoverable node
+        if(isDiscoverable) {
             this.ctx.beginPath();
-            this.ctx.arc(node.x, node.y, baseRadius + 5, 0, Math.PI * 2);
-            this.ctx.fillStyle = 'rgba(0, 255, 242, 0.1)';
+            this.ctx.arc(node.x, node.y, baseRadius + 8, 0, Math.PI * 2);
+            this.ctx.fillStyle = `rgba(0, 255, 242, ${0.2 + Math.sin(Date.now() / 500) * 0.1})`;
             this.ctx.fill();
         }
 
         // Main node
         this.ctx.beginPath();
         this.ctx.arc(node.x, node.y, baseRadius, 0, Math.PI * 2);
-        this.ctx.fillStyle = node.project ? 
-            'rgba(0, 255, 242, 0.8)' : 
-            'rgba(0, 255, 242, 0.3)';
+        
+        if(isDiscovered) {
+            this.ctx.fillStyle = 'rgba(0, 255, 242, 0.8)';
+        } else if(isDiscoverable) {
+            this.ctx.fillStyle = 'rgba(0, 255, 242, 0.6)';
+        } else if(node.project) {
+            this.ctx.fillStyle = 'rgba(100, 100, 100, 0.3)';
+        } else {
+            this.ctx.fillStyle = 'rgba(0, 255, 242, 0.3)';
+        }
+        
         this.ctx.fill();
 
         // Highlight active node
@@ -262,55 +278,81 @@ class PortfolioField {
     }
 
     handleClick(e) {
-        if (this.activeNode && this.activeNode.project) {
-            // Create ripple effect
-            const ripple = {
-                x: this.activeNode.x,
-                y: this.activeNode.y,
-                radius: 0,
-                maxRadius: 100,
-                opacity: 1
-            };
-            
-            const animate = () => {
-                ripple.radius += 2;
-                ripple.opacity -= 0.02;
-                
-                this.ctx.beginPath();
-                this.ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
-                this.ctx.strokeStyle = `rgba(0, 255, 242, ${ripple.opacity})`;
-                this.ctx.stroke();
-                
-                if (ripple.radius < ripple.maxRadius) {
-                    requestAnimationFrame(animate);
-                }
-            };
-            
-            animate();
-            
-            // Highlight connected nodes
-            this.highlightConnections(this.activeNode);
-        }
-    }
+        const rect = this.canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-    highlightConnections(node) {
-        // Find all nodes within connection distance
-        this.nodes.forEach(otherNode => {
-            const dx = node.x - otherNode.x;
-            const dy = node.y - otherNode.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < 150) {
-                // Add pulsing connection
-                const connection = {
-                    start: node,
-                    end: otherNode,
-                    pulse: 0
-                };
+        this.nodes.forEach(node => {
+            if(node.project && node.project.id === this.currentDiscoverable) {
+                const dx = x - node.x;
+                const dy = y - node.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                this.pulsingConnections.push(connection);
+                if(distance < 30) {
+                    this.discoverProject(node.project);
+                }
             }
         });
+    }
+
+    discoverProject(project) {
+        this.chimeSound.play();
+        this.discoveredProjects.add(project.id);
+        
+        // Determine next discoverable project
+        const projectIds = this.projects.map(p => p.id);
+        const currentIndex = projectIds.indexOf(project.id);
+        this.currentDiscoverable = projectIds[currentIndex + 1];
+
+        // Update UI
+        this.updateProjectDetails(project);
+        this.updateSidebar();
+        
+        // Add discovery animation
+        this.addDiscoveryEffect(project);
+    }
+
+    updateSidebar() {
+        const items = document.querySelectorAll('.portfolio-item');
+        items.forEach(item => {
+            const projectId = item.dataset.project;
+            const isDiscovered = this.discoveredProjects.has(projectId);
+            const isNext = projectId === this.currentDiscoverable;
+            
+            if(isDiscovered) {
+                item.classList.add('discovered');
+                item.querySelector('h3').textContent = this.projects.find(p => p.id === projectId).title;
+            } else {
+                item.classList.toggle('next', isNext);
+                item.querySelector('h3').textContent = '???? ????';
+            }
+        });
+    }
+
+    addDiscoveryEffect(project) {
+        const ripple = {
+            x: this.nodes.find(n => n.project?.id === project.id).x,
+            y: this.nodes.find(n => n.project?.id === project.id).y,
+            radius: 0,
+            opacity: 1
+        };
+
+        const animate = () => {
+            ripple.radius += 3;
+            ripple.opacity -= 0.02;
+
+            this.ctx.beginPath();
+            this.ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+            this.ctx.strokeStyle = `rgba(0, 255, 242, ${ripple.opacity})`;
+            this.ctx.lineWidth = 2;
+            this.ctx.stroke();
+
+            if(ripple.opacity > 0) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        animate();
     }
 
     addEventListeners() {
