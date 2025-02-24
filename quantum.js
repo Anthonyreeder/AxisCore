@@ -5,7 +5,7 @@ class QuantumExperience {
         this.ctx = this.initQuantumField();
         this.particles = [];
         this.lastTime = 0;
-        this.maxParticles = 50; // Limit total particles
+        this.maxParticles = 75; // Increased from 50
         
         this.init();
     }
@@ -22,9 +22,9 @@ class QuantumExperience {
         return {
             x: x || Math.random() * window.innerWidth,
             y: y || Math.random() * window.innerHeight,
-            size: 2,
-            speedX: (Math.random() - 0.5) * 1,
-            speedY: (Math.random() - 0.5) * 1,
+            size: Math.random() * 2 + 1.5, // Slightly larger particles
+            speedX: (Math.random() - 0.5) * 1.5, // Increased speed
+            speedY: (Math.random() - 0.5) * 1.5,
             life: 1,
             color: `hsla(${180 + Math.random() * 30}, 100%, 70%, `,
             connections: []
@@ -36,7 +36,7 @@ class QuantumExperience {
         this.lastTime = timestamp;
 
         // More subtle fade effect
-        this.ctx.fillStyle = 'rgba(0, 8, 20, 0.2)';
+        this.ctx.fillStyle = 'rgba(0, 8, 20, 0.15)'; // More subtle fade
         this.ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
         // Update and draw particles
@@ -76,7 +76,7 @@ class QuantumExperience {
         });
 
         // Add new particles less frequently and only if under max
-        if(Math.random() < 0.05 && this.particles.length < this.maxParticles) {
+        if(Math.random() < 0.08 && this.particles.length < this.maxParticles) { // Increased spawn rate
             this.particles.push(this.createParticle());
         }
 
