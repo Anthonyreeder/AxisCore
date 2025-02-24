@@ -936,4 +936,110 @@ section {
 @keyframes entangle {
     0%, 100% { transform: scaleX(1); opacity: 1; }
     50% { transform: scaleX(0.5); opacity: 0.5; }
+}
+
+.testimonials-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+}
+
+.testimonials-scroll {
+    overflow: hidden;
+    position: relative;
+    margin: 4rem 0;
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    cursor: grab;
+}
+
+.testimonials-track:active {
+    cursor: grabbing;
+}
+
+.testimonial-card {
+    min-width: 400px;
+    padding: 2rem;
+    background: rgba(0, 255, 242, 0.05);
+    border: 1px solid rgba(0, 255, 242, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    background: rgba(0, 255, 242, 0.08);
+    border-color: rgba(0, 255, 242, 0.2);
+}
+
+.quote {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.author {
+    font-weight: 600;
+    color: var(--quantum-primary);
+    margin-bottom: 0.3rem;
+}
+
+.position {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.scroll-indicators {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.scroll-progress {
+    width: 200px;
+    height: 2px;
+    background: rgba(0, 255, 242, 0.1);
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.scroll-progress::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: var(--scroll-percent, 0%);
+    background: var(--quantum-primary);
+    transition: width 0.3s ease;
+}
+
+.scroll-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.scroll-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 255, 242, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scroll-dot.active {
+    background: var(--quantum-primary);
+    transform: scale(1.2);
 } 
