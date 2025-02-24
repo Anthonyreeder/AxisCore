@@ -560,6 +560,7 @@ section {
     text-align: center;
     padding: 2rem;
     position: relative;
+    overflow: hidden;  /* Add this to contain the smoke */
 }
 
 .content-section h1, 
@@ -616,4 +617,34 @@ section {
     bottom: 0;
     border-radius: 3px;
     transition: height 0.1s ease;
+}
+
+#update-console {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    color: #00ff00;
+    padding: 10px;
+    font-family: monospace;
+    z-index: 9999;
+    font-size: 12px;
+}
+
+#update-console button {
+    background: none;
+    border: none;
+    color: #ff0000;
+    cursor: pointer;
+    float: right;
+    margin-left: 10px;
+}
+
+.smoke-effect {
+    position: absolute;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 } 

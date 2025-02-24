@@ -13,7 +13,7 @@ class ScrollExperience {
 
     init() {
         // Create light bars
-        const numBars = 12;  // Increased number of bars
+        const numBars = 12;
         for(let i = 0; i < numBars; i++) {
             const bar = document.createElement('div');
             bar.className = 'light-bar';
@@ -42,6 +42,57 @@ class ScrollExperience {
         setTimeout(() => note.remove(), 1000);
     }
 
+    createSmoke(element) {
+        const smoke = document.createElement('canvas');
+        smoke.className = 'smoke-effect';
+        smoke.width = 200;
+        smoke.height = 200;
+        element.appendChild(smoke);
+
+        const ctx = smoke.getContext('2d');
+        let particles = [];
+        
+        // Create smoke particles
+        for(let i = 0; i < 50; i++) {
+            particles.push({
+                x: smoke.width/2,
+                y: smoke.height/2,
+                vx: (Math.random() - 0.5) * 2,
+                vy: (Math.random() - 2),
+                size: Math.random() * 15 + 5,
+                opacity: Math.random() * 0.5 + 0.5
+            });
+        }
+
+        const animate = () => {
+            ctx.clearRect(0, 0, smoke.width, smoke.height);
+            
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.opacity -= 0.01;
+                p.size += 0.2;
+
+                if(p.opacity > 0) {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${p.opacity})`;
+                    ctx.fill();
+                }
+            });
+
+            particles = particles.filter(p => p.opacity > 0);
+            
+            if(particles.length > 0) {
+                requestAnimationFrame(animate);
+            } else {
+                smoke.remove();
+            }
+        };
+
+        animate();
+    }
+
     updateProgress() {
         const scrollProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
         document.getElementById('progress-bar').style.height = `${scrollProgress * 100}%`;
@@ -51,15 +102,6 @@ class ScrollExperience {
         const currentScroll = window.scrollY;
         this.scrollVelocity = currentScroll - this.lastScrollY;
         this.lastScrollY = currentScroll;
-
-        // Create notes based on scroll velocity
-        if(Math.abs(this.scrollVelocity) > 10) {
-            this.lightBars.forEach((bar, i) => {
-                const rect = bar.getBoundingClientRect();
-                const hue = (i * 30 + currentScroll / 2) % 360;
-                this.createNote(rect.left, window.innerHeight / 2 + (Math.random() - 0.5) * 100, hue);
-            });
-        }
 
         // Update light bars
         this.lightBars.forEach((bar, i) => {
@@ -73,11 +115,14 @@ class ScrollExperience {
             bar.style.filter = `blur(${Math.abs(this.scrollVelocity) / 20}px)`;
         });
 
-        // Update sections visibility
+        // Update sections visibility with smoke effect
         this.sections.forEach(section => {
             const rect = section.getBoundingClientRect();
             if(rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3) {
-                section.classList.add('active');
+                if(!section.classList.contains('active')) {
+                    section.classList.add('active');
+                    this.createSmoke(section);
+                }
             } else {
                 section.classList.remove('active');
             }
