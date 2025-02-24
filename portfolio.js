@@ -51,6 +51,9 @@ class PortfolioField {
         this.maxTrails = 50;
         this.pulsingConnections = [];
         this.init();
+
+        // Initialize all projects as undiscovered
+        this.initializeSidebar();
     }
 
     init() {
@@ -230,21 +233,32 @@ class PortfolioField {
         this.addTrail(x, y);
         this.updateNodePositions(x, y);
 
-        // Only highlight discoverable node, don't show details
+        // Check for hovering over any discovered or discoverable node
         let hoveredNode = null;
         this.nodes.forEach(node => {
-            if(node.project && node.project.id === this.currentDiscoverable) {
+            if(node.project) {
                 const dx = x - node.x;
                 const dy = y - node.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
                 if(distance < 30) {
-                    hoveredNode = node;
+                    if(node.project.id === this.currentDiscoverable || 
+                       this.discoveredProjects.has(node.project.id)) {
+                        hoveredNode = node;
+                    }
                 }
             }
         });
 
         this.activeNode = hoveredNode;
+        
+        // Show/hide project details based on hover
+        const details = document.querySelector('.project-details');
+        if(hoveredNode && this.discoveredProjects.has(hoveredNode.project.id)) {
+            this.updateProjectDetails(hoveredNode.project);
+        } else {
+            details.classList.remove('visible');
+        }
     }
 
     updateProjectDetails(project) {
@@ -344,6 +358,17 @@ class PortfolioField {
         };
 
         animate();
+    }
+
+    initializeSidebar() {
+        const items = document.querySelectorAll('.portfolio-item');
+        items.forEach(item => {
+            item.querySelector('h3').textContent = '???? ????';
+            item.querySelector('.preview-text').style.display = 'none';
+            if(item.dataset.project === 'project1') {
+                item.classList.add('next');
+            }
+        });
     }
 
     addEventListeners() {
