@@ -1096,4 +1096,74 @@ section {
 
 .testimonials-track {
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add these styles */
+.process-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.process-list li {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.step {
+    color: var(--quantum-primary);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.highlight {
+    font-size: 1.2rem;
+    color: var(--quantum-primary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.benefit {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0, 255, 242, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.benefit:hover {
+    background: rgba(0, 255, 242, 0.1);
+    transform: translateY(-5px);
+}
+
+.benefit .icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.benefit h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--quantum-primary);
+}
+
+.benefit p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+.solution-box, .results-box {
+    padding: 2.5rem !important;
 } 
