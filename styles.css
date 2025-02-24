@@ -812,17 +812,27 @@ section {
 .state-0, .state-1 {
     position: absolute;
     width: 100%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     text-align: center;
-    transition: opacity 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 .state-0 {
     font-size: 3rem;
     font-weight: bold;
+    opacity: 1;
+    z-index: 2;
 }
 
 .state-1 {
     font-size: 1.5rem;
+    opacity: 0;
+    z-index: 1;
+}
+
+.qubit:hover .state-0 {
     opacity: 0;
 }
 

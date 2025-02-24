@@ -3,31 +3,24 @@ class TestimonialsCarousel {
         this.container = document.querySelector('.testimonials-scroll');
         this.track = document.querySelector('.testimonials-track');
         this.cards = Array.from(document.querySelectorAll('.testimonial-card'));
+        this.prevButton = document.querySelector('.carousel-arrow.prev');
+        this.nextButton = document.querySelector('.carousel-arrow.next');
         
         this.isDragging = false;
         this.startPos = 0;
         this.currentTranslate = 0;
         this.prevTranslate = 0;
         this.animationID = 0;
-        this.autoScrollSpeed = 0.5; // Pixels per frame
+        this.autoScrollSpeed = 1; // Increased speed
         this.isHovered = false;
         
         this.init();
     }
 
     init() {
-        // Add dots
-        const dotsContainer = document.querySelector('.scroll-dots');
-        this.cards.forEach((_, idx) => {
-            const dot = document.createElement('div');
-            dot.className = 'scroll-dot' + (idx === 0 ? ' active' : '');
-            dot.addEventListener('click', () => this.scrollToCard(idx));
-            dotsContainer.appendChild(dot);
-        });
-
         // Manual controls
-        document.querySelector('.carousel-arrow.prev').addEventListener('click', () => this.scrollToPrev());
-        document.querySelector('.carousel-arrow.next').addEventListener('click', () => this.scrollToNext());
+        this.prevButton.addEventListener('click', () => this.scrollToPrev());
+        this.nextButton.addEventListener('click', () => this.scrollToNext());
 
         // Mouse wheel scrolling
         this.container.addEventListener('wheel', (e) => {
@@ -39,8 +32,6 @@ class TestimonialsCarousel {
             );
             this.prevTranslate = this.currentTranslate;
             this.setSliderPosition();
-            this.updateDots();
-            this.updateProgress();
         });
 
         // Hover detection
@@ -58,17 +49,28 @@ class TestimonialsCarousel {
         this.track.addEventListener('mouseup', this.touchEnd.bind(this));
         this.track.addEventListener('mouseleave', this.touchEnd.bind(this));
 
-        // Prevent context menu
-        window.oncontextmenu = e => {
-            if(e.target.closest('.testimonials-track')) {
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
-            }
-        };
-
         // Start continuous scroll
         this.startContinuousScroll();
+    }
+
+    startContinuousScroll() {
+        const animate = () => {
+            if (!this.isDragging && !this.isHovered) {
+                const maxScroll = -((this.cards.length - 1) * (this.cards[0].offsetWidth + 32));
+                this.currentTranslate -= this.autoScrollSpeed;
+                
+                // Reset to start when reaching the end
+                if (this.currentTranslate <= maxScroll) {
+                    this.currentTranslate = 0;
+                }
+                
+                this.prevTranslate = this.currentTranslate;
+                this.setSliderPosition();
+            }
+            requestAnimationFrame(animate);
+        };
+        
+        requestAnimationFrame(animate);
     }
 
     touchStart(e) {
@@ -115,7 +117,7 @@ class TestimonialsCarousel {
     }
 
     snapToClosest() {
-        const cardWidth = this.cards[0].offsetWidth + 32; // Including gap
+        const cardWidth = this.cards[0].offsetWidth + 32;
         const closest = Math.round(this.currentTranslate / cardWidth) * cardWidth;
         this.scrollToPosition(closest);
     }
@@ -124,44 +126,6 @@ class TestimonialsCarousel {
         this.currentTranslate = position;
         this.prevTranslate = position;
         this.setSliderPosition();
-        this.updateDots();
-        this.updateProgress();
-    }
-
-    updateDots() {
-        const cardWidth = this.cards[0].offsetWidth + 32;
-        const activeIndex = Math.abs(Math.round(this.currentTranslate / cardWidth));
-        document.querySelectorAll('.scroll-dot').forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === activeIndex);
-        });
-    }
-
-    updateProgress() {
-        const maxScroll = (this.cards.length - 1) * (this.cards[0].offsetWidth + 32);
-        const progress = (Math.abs(this.currentTranslate) / maxScroll) * 100;
-        document.querySelector('.scroll-progress').style.setProperty('--scroll-percent', `${progress}%`);
-    }
-
-    startContinuousScroll() {
-        const animate = () => {
-            if (!this.isDragging && !this.isHovered) {
-                const maxScroll = -((this.cards.length - 1) * (this.cards[0].offsetWidth + 32));
-                this.currentTranslate -= this.autoScrollSpeed;
-                
-                // Reset to start when reaching the end
-                if (this.currentTranslate <= maxScroll) {
-                    this.currentTranslate = 0;
-                }
-                
-                this.prevTranslate = this.currentTranslate;
-                this.setSliderPosition();
-                this.updateDots();
-                this.updateProgress();
-            }
-            requestAnimationFrame(animate);
-        };
-        
-        requestAnimationFrame(animate);
     }
 
     scrollToNext() {
@@ -179,11 +143,6 @@ class TestimonialsCarousel {
         if(this.currentTranslate < 0) {
             this.scrollToPosition(this.currentTranslate + cardWidth);
         }
-    }
-
-    scrollToCard(index) {
-        const cardWidth = this.cards[0].offsetWidth + 32;
-        this.scrollToPosition(-cardWidth * index);
     }
 }
 
