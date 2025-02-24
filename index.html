@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mindbees Consulting - Salesforce Consulting Company</title>
+    <title>AxisCore - Technology Solutions</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -13,21 +13,12 @@
     <header>
         <nav>
             <div class="nav-container">
-                <div class="logo">
-                    <img src="mindbee_logo.svg" alt="Mindbees Logo">
-                </div>
+                <a href="#" class="logo">AxisCore</a>
                 <ul>
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
                     <li><a href="#about">About</a></li>
-                    <li class="services-dropdown">
-                        <a href="#services">Services</a>
-                        <div class="dropdown-content">
-                            <a href="#consultation">Consultation</a>
-                            <a href="#courses">Courses</a>
-                            <a href="#internships">Internships</a>
-                        </div>
-                    </li>
-                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -36,78 +27,55 @@
 
     <main>
         <section id="home" class="hero">
-            <h1>Better Business Starts with<br>Better Service Consultation</h1>
-            <div class="hero-content">
-                <p>Transform your business with our expert Salesforce consultation services</p>
-            </div>
+            <h1>Transforming Ideas Into<br>Digital Reality</h1>
+            <p class="tagline">We deliver innovative technology solutions that drive business growth and digital transformation</p>
         </section>
 
-        <section id="services" class="services">
+        <section id="services">
             <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Mindbees offers extensive services regarding Salesforce and CRM</p>
-            
-            <div class="cloud-services">
-                <h3>Salesforce Cloud Technologies We Support</h3>
-                <div class="cloud-grid">
-                    <div class="cloud-card">Sales Cloud</div>
-                    <div class="cloud-card">Service Cloud</div>
-                    <div class="cloud-card">Experience Cloud</div>
-                    <div class="cloud-card">Health Cloud</div>
-                    <div class="cloud-card">Financial Services Cloud</div>
-                    <div class="cloud-card">Education Cloud</div>
-                    <div class="cloud-card">Non-Profit Cloud</div>
+            <p class="section-subtitle">Comprehensive technology solutions tailored to your business needs</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Software Development</h3>
+                    <p>Custom software solutions tailored to your unique business needs, from web applications to enterprise systems.</p>
                 </div>
-            </div>
-
-            <div class="industries">
-                <h3>Industries We Empower with Salesforce</h3>
-                <div class="industries-grid">
-                    <div class="industry-card">Healthcare, Pharma and Life Sciences</div>
-                    <div class="industry-card">Financial Services & Insurance</div>
-                    <div class="industry-card">Tech Industry</div>
-                    <div class="industry-card">Education Sector</div>
-                    <div class="industry-card">Real Estate</div>
-                    <div class="industry-card">Manufacturing and Construction</div>
-                    <div class="industry-card">Marketing, Communications & Ecommerce</div>
+                <div class="service-card">
+                    <h3>Cloud Solutions</h3>
+                    <p>Secure and scalable cloud infrastructure design, migration, and management services.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Digital Consulting</h3>
+                    <p>Strategic technology consulting to help you navigate digital transformation and innovation.</p>
                 </div>
             </div>
         </section>
 
-        <section id="courses" class="courses">
-            <h2 class="section-title">Lead the Way, Acquire Certifications from Top-Tier Programs</h2>
-            <div class="courses-grid">
-                <!-- Salesforce Admin Course -->
-                <div class="course-card">
-                    <img src="salesforce-admin.jpg" alt="Salesforce Admin Course">
-                    <h3>Salesforce Admin</h3>
-                    <div class="enrollment">
-                        <span>Enrollments: 12k</span>
-                        <span class="rating">(4.7)</span>
-                    </div>
-                    <ul class="course-features">
-                        <li>Configuration and Setup</li>
-                        <li>Object Manager and Lightning App Builder</li>
-                        <li>Sales and Marketing Applications</li>
-                        <li>Service and Support Applications</li>
-                    </ul>
-                    <button class="enroll-btn">Enroll Now</button>
+        <section id="about">
+            <h2 class="section-title">About AxisCore</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Our Mission</h3>
+                    <p>To empower businesses with cutting-edge technology solutions that drive growth, efficiency, and innovation in the digital age.</p>
                 </div>
-                <!-- Add other course cards similarly -->
+                <div class="service-card">
+                    <h3>Our Expertise</h3>
+                    <p>With years of experience in technology consulting and development, we bring deep expertise to every project we undertake.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Our Approach</h3>
+                    <p>We believe in collaborative partnerships, innovative solutions, and delivering measurable results for our clients.</p>
+                </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
-            <h2 class="section-title">Don't Hesitate to ask a question to us</h2>
-            <p>Reach us out to clear your doubts regarding salesforce courses we provide, we will reach you out sooner.</p>
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to transform your business? Let's start a conversation.</p>
             <form class="contact-form">
                 <input type="text" placeholder="Name" required>
                 <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="Mobile" required>
-                <textarea placeholder="Message" required></textarea>
-                <div class="form-checkbox">
-                    <input type="checkbox" id="updates">
-                    <label for="updates">Receive Future Updates</label>
-                </div>
+                <input type="tel" placeholder="Phone">
+                <textarea placeholder="Tell us about your project" rows="4" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </section>
@@ -115,42 +83,40 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">
-                <img src="mindbee_logo.svg" alt="Mindbees Logo">
-                <p>Mindbee consulting - A Salesforce Consulting Company</p>
+            <div class="footer-section">
+                <h3>AxisCore</h3>
+                <p>Innovative technology solutions for tomorrow's challenges.</p>
             </div>
             <div class="footer-links">
                 <div class="footer-section">
-                    <h3>Company</h3>
+                    <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#courses">Courses</a></li>
-                        <li><a href="#blogs">Blogs</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Support</h3>
+                    <h3>Services</h3>
                     <ul>
-                        <li><a href="#privacy">Rules & privacy</a></li>
-                        <li><a href="#refund">Refund Policy</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="#internships">Internships</a></li>
+                        <li><a href="#software">Software Development</a></li>
+                        <li><a href="#cloud">Cloud Solutions</a></li>
+                        <li><a href="#consulting">Digital Consulting</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Get in touch</h3>
-                    <p>Seshangur, Villupuram, Tamilnadu-605501</p>
-                    <p>+91 8825640296</p>
-                    <p>mindbeesconsulting@gmail.com</p>
+                    <h3>Contact</h3>
+                    <p>Email: contact@axiscore.com</p>
+                    <p>Phone: (555) 123-4567</p>
                 </div>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2024 all rights reserved</p>
+            <p>&copy; 2024 AxisCore. All rights reserved.</p>
         </div>
     </footer>
-    
+
     <script src="particles.js"></script>
 </body>
 </html> 
