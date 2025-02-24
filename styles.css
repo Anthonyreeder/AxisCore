@@ -69,7 +69,6 @@ body {
     margin: 0;
     padding: 0;
     background: var(--quantum-dark);
-    min-height: 500vh;
     font-family: 'Inter', sans-serif;
     color: var(--quantum-primary);
     overflow-x: hidden;
@@ -771,6 +770,9 @@ section {
 .quantum-container {
     position: relative;
     z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .quantum-state {
@@ -1431,7 +1433,7 @@ select.quantum-input {
 
 /* Add quantum footer styles */
 .quantum-footer {
-    margin-top: 4rem;
+    margin-top: auto;
     padding: 4rem 2rem 2rem;
     background: linear-gradient(
         to bottom,
