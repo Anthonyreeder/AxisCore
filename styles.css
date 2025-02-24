@@ -15,14 +15,14 @@
     top: 0;
     left: 0;
     z-index: 1;
-    background: linear-gradient(135deg, 
-        rgba(0, 71, 171, 0.95), 
-        rgba(0, 35, 85, 0.95),
-        rgba(0, 20, 60, 0.95)
+    background: linear-gradient(45deg, 
+        #002147 0%,
+        #003366 50%,
+        #002147 100%
     );
 }
 
-/* Add subtle radial gradient overlays */
+/* Add a subtle glow effect */
 #particles-js::before {
     content: '';
     position: absolute;
@@ -30,11 +30,17 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(
-        circle at 30% 30%,
-        rgba(255, 255, 255, 0.1) 0%,
-        transparent 60%
-    );
+    background: 
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(52, 152, 219, 0.2) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(46, 204, 113, 0.2) 0%,
+            transparent 50%
+        );
     pointer-events: none;
 }
 

@@ -1,54 +1,50 @@
 particlesJS("particles-js", {
   particles: {
     number: {
-      value: 100,
+      value: 80,
       density: {
         enable: true,
-        value_area: 800
+        value_area: 1500
       }
     },
     color: {
-      value: ["#ffffff", "#87CEEB", "#00BFFF", "#1E90FF"]  // Multiple colors
+      value: ["#ffffff", "#3498db", "#e74c3c", "#2ecc71"]
     },
     shape: {
-      type: ["circle", "triangle"],  // Mix of shapes
-      stroke: {
-        width: 0,
-        color: "#000000"
-      }
+      type: "circle",
     },
     opacity: {
-      value: 0.6,
+      value: 0.5,
       random: true,
       anim: {
         enable: true,
-        speed: 0.5,
+        speed: 1,
         opacity_min: 0.1,
         sync: false
       }
     },
     size: {
-      value: 3,
+      value: 5,
       random: true,
       anim: {
         enable: true,
-        speed: 2,
-        size_min: 0.1,
+        speed: 3,
+        size_min: 0.3,
         sync: false
       }
     },
     line_linked: {
       enable: true,
       distance: 150,
-      color: "#ffffff",
+      color: "#3498db",
       opacity: 0.2,
       width: 1
     },
     move: {
       enable: true,
       speed: 2,
-      direction: "none",
-      random: true,
+      direction: "top",
+      random: false,
       straight: false,
       out_mode: "out",
       bounce: false,
@@ -64,18 +60,18 @@ particlesJS("particles-js", {
     events: {
       onhover: {
         enable: true,
-        mode: ["bubble", "repulse"]
+        mode: "bubble"
       },
       onclick: {
         enable: true,
-        mode: "push"
+        mode: "repulse"
       },
       resize: true
     },
     modes: {
       bubble: {
-        distance: 250,
-        size: 6,
+        distance: 200,
+        size: 12,
         duration: 2,
         opacity: 0.8,
         speed: 3
@@ -83,29 +79,10 @@ particlesJS("particles-js", {
       repulse: {
         distance: 200,
         duration: 0.4
-      },
-      push: {
-        particles_nb: 4
       }
     }
   },
-  retina_detect: true,
-  // Add custom animation patterns
-  animation: {
-    enable: true,
-    patterns: [
-      {
-        type: "flow",
-        speed: 5,
-        direction: "right"
-      },
-      {
-        type: "vortex",
-        speed: 3,
-        center: { x: 0.2, y: 0.5 }
-      }
-    ]
-  }
+  retina_detect: true
 });
 
 // Add custom animation effects
