@@ -88,32 +88,4 @@ particlesJS("particles-js", {
     }
   },
   retina_detect: true
-});
-
-// Add custom animation effects
-let time = 0;
-function animateParticles() {
-  time += 0.01;
-  
-  const particles = pJSDom[0].pJS.particles.array;
-  particles.forEach((p, i) => {
-    // Create flowing wave pattern
-    p.y += Math.sin(time + i * 0.1) * 0.5;
-    
-    // Add subtle spiral effect
-    const angle = time * 0.5;
-    const radius = 100;
-    p.x += Math.cos(angle + i * 0.1) * 0.2;
-    
-    // Change colors gradually
-    if (i % 20 === 0) {
-      const hue = (time * 10) % 360;
-      p.color = `hsl(${hue}, 70%, 70%)`;
-    }
-  });
-  
-  requestAnimationFrame(animateParticles);
-}
-
-// Start custom animation
-animateParticles(); 
+}); 
