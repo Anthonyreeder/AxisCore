@@ -17,22 +17,40 @@ class TestimonialsCarousel {
         this.currentTranslate = 0;
         this.prevTranslate = 0;
         this.animationID = 0;
-        this.autoScrollSpeed = 0.5; // Reduced speed a bit
+        this.autoScrollSpeed = 1.5; // Increased auto-scroll speed
         this.isHovered = false;
+        this.cardWidth = this.cards[0].offsetWidth + 32; // Store card width + gap
         
         this.init();
     }
 
     init() {
-        // Manual controls with direct function calls
+        // Manual controls with instant card-by-card scrolling
         this.prevButton.onclick = () => {
-            console.log('Previous clicked');
-            this.scrollToPrev();
+            this.isHovered = true; // Pause auto-scroll
+            const newPosition = this.currentTranslate + this.cardWidth;
+            if(newPosition <= 0) {
+                this.currentTranslate = newPosition;
+            } else {
+                this.currentTranslate = 0;
+            }
+            this.prevTranslate = this.currentTranslate;
+            this.setSliderPosition();
+            setTimeout(() => this.isHovered = false, 1000); // Resume auto-scroll after 1s
         };
         
         this.nextButton.onclick = () => {
-            console.log('Next clicked');
-            this.scrollToNext();
+            this.isHovered = true; // Pause auto-scroll
+            const maxScroll = -(this.cardWidth * (this.cards.length - 1));
+            const newPosition = this.currentTranslate - this.cardWidth;
+            if(newPosition >= maxScroll) {
+                this.currentTranslate = newPosition;
+            } else {
+                this.currentTranslate = 0; // Loop back to start
+            }
+            this.prevTranslate = this.currentTranslate;
+            this.setSliderPosition();
+            setTimeout(() => this.isHovered = false, 1000); // Resume auto-scroll after 1s
         };
 
         // Mouse wheel scrolling
