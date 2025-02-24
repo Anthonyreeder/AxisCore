@@ -6,6 +6,8 @@
     --gradient-start: #0047AB;
     --gradient-end: #00308F;
     --background: #0047AB;
+    --page-color: #002147;
+    --accent-color: #0047AB;
 }
 
 #particles-js {
@@ -65,7 +67,7 @@ body {
     background: #000;
     min-height: 500vh;
     font-family: 'Inter', sans-serif;
-    color: white;
+    color: var(--text-color);
     overflow-x: hidden;
 }
 
@@ -648,4 +650,106 @@ section {
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+.book {
+    perspective: 1500px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.page {
+    min-height: 100vh;
+    position: relative;
+    transform-style: preserve-3d;
+    background: var(--page-color);
+    transition: transform 0.8s ease;
+}
+
+.content {
+    padding: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.popup-element {
+    opacity: 0;
+    transform: translateZ(-100px);
+    transition: all 0.8s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.page.active .popup-element {
+    opacity: 1;
+    transform: translateZ(100px);
+}
+
+/* Specific page styles */
+.intro-page .company-card {
+    max-width: 600px;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.services-page .content {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.left-fold, .right-fold {
+    flex: 1;
+    transform-origin: center left;
+}
+
+.right-fold {
+    transform-origin: center right;
+}
+
+.project-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateZ(150px);
+}
+
+.contact-card {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Animation classes */
+.page.active {
+    transform: translateZ(0) rotateX(0);
+}
+
+.page.inactive-top {
+    transform: translateZ(-300px) rotateX(20deg);
+}
+
+.page.inactive-bottom {
+    transform: translateZ(-300px) rotateX(-20deg);
 } 
