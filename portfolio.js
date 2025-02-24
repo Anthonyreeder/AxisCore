@@ -40,6 +40,9 @@ class PortfolioField {
         
         this.nodes = [];
         this.activeNode = null;
+        this.trails = [];
+        this.maxTrails = 50;
+        this.pulsingConnections = [];
         this.init();
     }
 
@@ -113,6 +116,30 @@ class PortfolioField {
         }
     }
 
+    addTrail(x, y) {
+        this.trails.push({
+            x, y,
+            life: 1,
+            radius: 2
+        });
+        
+        if (this.trails.length > this.maxTrails) {
+            this.trails.shift();
+        }
+    }
+
+    drawTrails() {
+        this.trails.forEach((trail, i) => {
+            this.ctx.beginPath();
+            this.ctx.arc(trail.x, trail.y, trail.radius * trail.life, 0, Math.PI * 2);
+            this.ctx.fillStyle = `rgba(0, 255, 242, ${0.2 * trail.life})`;
+            this.ctx.fill();
+            trail.life *= 0.95;
+        });
+
+        this.trails = this.trails.filter(trail => trail.life > 0.01);
+    }
+
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
@@ -150,13 +177,42 @@ class PortfolioField {
         // Draw nodes
         this.nodes.forEach(node => this.drawNode(node));
 
+        this.drawTrails();
+
         requestAnimationFrame(() => this.animate());
+    }
+
+    updateNodePositions(mouseX, mouseY) {
+        this.nodes.forEach(node => {
+            if (!node.project) {
+                const dx = mouseX - node.x;
+                const dy = mouseY - node.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    node.vx -= (dx / distance) * force * 0.5;
+                    node.vy -= (dy / distance) * force * 0.5;
+                }
+                
+                // Add some random movement
+                node.vx += (Math.random() - 0.5) * 0.1;
+                node.vy += (Math.random() - 0.5) * 0.1;
+                
+                // Apply friction
+                node.vx *= 0.99;
+                node.vy *= 0.99;
+            }
+        });
     }
 
     handleMouseMove(e) {
         const rect = this.canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
+        
+        this.addTrail(x, y);
+        this.updateNodePositions(x, y);
 
         let hoveredNode = null;
         this.nodes.forEach(node => {
@@ -205,8 +261,61 @@ class PortfolioField {
         }
     }
 
+    handleClick(e) {
+        if (this.activeNode && this.activeNode.project) {
+            // Create ripple effect
+            const ripple = {
+                x: this.activeNode.x,
+                y: this.activeNode.y,
+                radius: 0,
+                maxRadius: 100,
+                opacity: 1
+            };
+            
+            const animate = () => {
+                ripple.radius += 2;
+                ripple.opacity -= 0.02;
+                
+                this.ctx.beginPath();
+                this.ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+                this.ctx.strokeStyle = `rgba(0, 255, 242, ${ripple.opacity})`;
+                this.ctx.stroke();
+                
+                if (ripple.radius < ripple.maxRadius) {
+                    requestAnimationFrame(animate);
+                }
+            };
+            
+            animate();
+            
+            // Highlight connected nodes
+            this.highlightConnections(this.activeNode);
+        }
+    }
+
+    highlightConnections(node) {
+        // Find all nodes within connection distance
+        this.nodes.forEach(otherNode => {
+            const dx = node.x - otherNode.x;
+            const dy = node.y - otherNode.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 150) {
+                // Add pulsing connection
+                const connection = {
+                    start: node,
+                    end: otherNode,
+                    pulse: 0
+                };
+                
+                this.pulsingConnections.push(connection);
+            }
+        });
+    }
+
     addEventListeners() {
         this.canvas.addEventListener('mousemove', this.handleMouseMove.bind(this));
+        this.canvas.addEventListener('click', this.handleClick.bind(this));
         window.addEventListener('resize', () => {
             this.setupCanvas();
             this.createNodes();

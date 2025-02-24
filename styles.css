@@ -1592,10 +1592,12 @@ select.quantum-input {
     padding: 1.5rem;
     border-radius: 10px;
     border: 1px solid rgba(0, 255, 242, 0.2);
-    transform: translateY(100%);
+    transform: translateY(150%);
     transition: transform 0.3s ease;
+    opacity: 0;
 }
 
 .project-details.visible {
     transform: translateY(0);
+    opacity: 1;
 } 
