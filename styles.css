@@ -8,6 +8,10 @@
     --background: #0047AB;
     --page-color: #002147;
     --accent-color: #0047AB;
+    --quantum-primary: #00fff2;
+    --quantum-secondary: #0066ff;
+    --quantum-dark: #000814;
+    --quantum-glow: 0 0 20px var(--quantum-primary);
 }
 
 #particles-js {
@@ -64,10 +68,10 @@
 body {
     margin: 0;
     padding: 0;
-    background: #000;
+    background: var(--quantum-dark);
     min-height: 500vh;
     font-family: 'Inter', sans-serif;
-    color: var(--text-color);
+    color: var(--quantum-primary);
     overflow-x: hidden;
 }
 
@@ -752,4 +756,184 @@ section {
 
 .page.inactive-bottom {
     transform: translateZ(-300px) rotateX(-20deg);
+}
+
+#quantum-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+.quantum-container {
+    position: relative;
+    z-index: 1;
+}
+
+.quantum-state {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.superposition {
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.superposition.collapsed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.qubit {
+    position: relative;
+    padding: 2rem;
+    border: 2px solid var(--quantum-primary);
+    border-radius: 10px;
+    background: rgba(0, 255, 242, 0.05);
+    box-shadow: var(--quantum-glow);
+    transition: all 0.5s ease;
+}
+
+.qubit:hover {
+    box-shadow: 0 0 30px var(--quantum-primary);
+    transform: scale(1.05);
+}
+
+.state-0, .state-1 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    transition: opacity 0.5s ease;
+}
+
+.state-0 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.state-1 {
+    font-size: 1.5rem;
+    opacity: 0;
+}
+
+.qubit:hover .state-1 {
+    opacity: 1;
+}
+
+.probability-wave {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--quantum-primary);
+    animation: waveform 2s infinite;
+}
+
+.quantum-circuit {
+    display: grid;
+    gap: 2rem;
+}
+
+.gate {
+    padding: 2rem;
+    border: 2px solid var(--quantum-primary);
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.gate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        transparent 0%,
+        rgba(0, 255, 242, 0.1) 50%,
+        transparent 100%);
+    animation: quantumScan 2s infinite;
+}
+
+.quantum-bits {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.quantum-bits span {
+    padding: 0.5rem 1rem;
+    background: rgba(0, 255, 242, 0.1);
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.quantum-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 400px;
+    width: 100%;
+}
+
+.quantum-input {
+    background: rgba(0, 255, 242, 0.1);
+    border: 1px solid var(--quantum-primary);
+    color: var(--quantum-primary);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.quantum-button {
+    background: var(--quantum-primary);
+    color: var(--quantum-dark);
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+@keyframes waveform {
+    0%, 100% { transform: scaleX(1); }
+    50% { transform: scaleX(1.2); }
+}
+
+@keyframes quantumScan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.entangled-pair {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    position: relative;
+}
+
+.entangled-pair::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--quantum-primary);
+    animation: entangle 3s infinite;
+}
+
+@keyframes entangle {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(0.5); opacity: 0.5; }
 } 
