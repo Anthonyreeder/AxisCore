@@ -1252,4 +1252,86 @@ section {
 .process-step:hover .step-content {
     transform: translateX(10px);
     transition: all 0.3s ease;
+}
+
+.sf-logo-container {
+    text-align: center;
+    position: relative;
+    padding: 2rem;
+}
+
+.sf-logo {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sf-cloud {
+    width: 200px;
+    height: 120px;
+    position: relative;
+    background: transparent;
+    border: 3px solid var(--quantum-primary);
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 255, 242, 0.2),
+                inset 0 0 20px rgba(0, 255, 242, 0.1);
+    overflow: hidden;
+}
+
+.sf-network {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: 
+        radial-gradient(circle, var(--quantum-primary) 2px, transparent 2px) 0 0 / 20px 20px,
+        linear-gradient(to right, rgba(0, 255, 242, 0.2) 1px, transparent 1px) 0 0 / 20px 20px;
+    animation: pulse 2s infinite;
+}
+
+.sf-text {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--quantum-primary);
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
+}
+
+.sf-subtitle {
+    font-size: 1.2rem;
+    color: rgba(0, 255, 242, 0.7);
+    margin-top: 1rem;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Add a connecting line effect */
+.sf-logo-container::before,
+.sf-logo-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        var(--quantum-primary),
+        transparent
+    );
+}
+
+.sf-logo-container::before {
+    left: 0;
+}
+
+.sf-logo-container::after {
+    right: 0;
 } 
