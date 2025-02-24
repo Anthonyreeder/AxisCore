@@ -774,11 +774,11 @@ section {
 }
 
 .quantum-state {
-    min-height: 100vh;
+    min-height: 85vh;
+    padding: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
     position: relative;
 }
 
@@ -796,11 +796,12 @@ section {
 
 .qubit {
     position: relative;
-    padding: 2rem;
+    padding: 1.8rem;
     border: 2px solid var(--quantum-primary);
     border-radius: 10px;
     background: rgba(0, 255, 242, 0.05);
-    box-shadow: var(--quantum-glow);
+    box-shadow: 0 0 30px rgba(0, 255, 242, 0.1),
+                inset 0 0 20px rgba(0, 255, 242, 0.05);
     transition: all 0.5s ease;
 }
 
@@ -820,7 +821,7 @@ section {
 }
 
 .state-0 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
     opacity: 1;
     z-index: 2;
@@ -928,7 +929,7 @@ section {
 .entangled-pair {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
+    gap: 3rem;
     position: relative;
 }
 
@@ -976,8 +977,8 @@ section {
 }
 
 .testimonial-card {
-    min-width: 400px;
-    padding: 2rem;
+    min-width: 350px;
+    padding: 1.8rem;
     background: rgba(0, 255, 242, 0.05);
     border: 1px solid rgba(0, 255, 242, 0.1);
     border-radius: 15px;
@@ -1125,14 +1126,15 @@ section {
 .benefit-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 1rem;
 }
 
 .benefit {
     text-align: center;
     padding: 1.5rem;
-    background: rgba(0, 255, 242, 0.05);
+    background: rgba(0, 8, 20, 0.4);
+    border: 1px solid rgba(0, 255, 242, 0.1);
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -1162,6 +1164,11 @@ section {
 
 .solution-box, .results-box {
     padding: 2.5rem !important;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 8, 20, 0.8) 0%,
+        rgba(0, 8, 20, 0.6) 100%
+    );
 }
 
 .process-steps {
@@ -1195,6 +1202,8 @@ section {
     color: var(--quantum-primary);
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    font-weight: 500;
 }
 
 .step-content p {
@@ -1224,18 +1233,13 @@ section {
 }
 
 .highlight {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--quantum-primary);
     margin-bottom: 2rem;
     line-height: 1.6;
     position: relative;
     padding-left: 1rem;
     border-left: 3px solid var(--quantum-primary);
-}
-
-.solution-box {
-    background: rgba(0, 8, 20, 0.6);
-    backdrop-filter: blur(10px);
 }
 
 /* Add hover effects */
