@@ -213,4 +213,281 @@ particlesJS("particles-atomic", {
         }
     },
     background: { color: "#000066" }
+});
+
+// Digital Ecosystem
+particlesJS("digital-ecosystem", {
+    particles: {
+        number: {
+            value: 80,
+            density: { enable: true, value_area: 800 }
+        },
+        color: { value: ["#ff0000", "#00ff00", "#0000ff"] },
+        shape: {
+            type: "circle",
+            stroke: { width: 0 },
+        },
+        opacity: {
+            value: 0.6,
+            random: true,
+            anim: {
+                enable: true,
+                speed: 0.5,
+                opacity_min: 0.1,
+                sync: false
+            }
+        },
+        size: {
+            value: 3,
+            random: true,
+            anim: {
+                enable: true,
+                speed: 2,
+                size_min: 0.1,
+                sync: false
+            }
+        },
+        line_linked: {
+            enable: true,
+            distance: 100,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1
+        },
+        move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "bounce",
+            bounce: true,
+            attract: {
+                enable: true,
+                rotateX: 600,
+                rotateY: 1200
+            }
+        }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onhover: {
+                enable: true,
+                mode: "repulse"
+            },
+            onclick: {
+                enable: true,
+                mode: "push"
+            },
+            resize: true
+        }
+    },
+    retina_detect: true
+});
+
+// Neural Network
+particlesJS("neural-network", {
+    particles: {
+        number: {
+            value: 100,
+            density: { enable: true, value_area: 800 }
+        },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: {
+            value: 0.5,
+            random: false
+        },
+        size: {
+            value: 3,
+            random: true
+        },
+        line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#00ff00",
+            opacity: 0.4,
+            width: 1,
+            triangles: {
+                enable: true,
+                color: "#00ff00",
+                opacity: 0.1
+            }
+        },
+        move: {
+            enable: true,
+            speed: 1,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            attract: {
+                enable: true,
+                rotateX: 600,
+                rotateY: 1200
+            }
+        }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onhover: {
+                enable: true,
+                mode: "grab"
+            },
+            onclick: {
+                enable: true,
+                mode: "push"
+            },
+            resize: true
+        },
+        modes: {
+            grab: {
+                distance: 200,
+                line_linked: {
+                    opacity: 1
+                }
+            }
+        }
+    },
+    retina_detect: true
+});
+
+// Code Story
+particlesJS("code-story", {
+    particles: {
+        number: {
+            value: 50,
+            density: { enable: true, value_area: 800 }
+        },
+        color: { value: "#00ff00" },
+        shape: {
+            type: "char",
+            character: {
+                value: ["</>", "{ }", "[]", "//", "&&", "||", "=>", "++"],
+                font: "Courier New",
+                style: "",
+                weight: "400"
+            }
+        },
+        opacity: {
+            value: 0.8,
+            random: false
+        },
+        size: {
+            value: 16,
+            random: false
+        },
+        line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#00ff00",
+            opacity: 0.4,
+            width: 1
+        },
+        move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false
+        }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onhover: {
+                enable: true,
+                mode: "bubble"
+            },
+            onclick: {
+                enable: true,
+                mode: "repulse"
+            },
+            resize: true
+        }
+    },
+    retina_detect: true
+});
+
+// Quantum Field
+particlesJS("quantum-field", {
+    particles: {
+        number: {
+            value: 100,
+            density: { enable: true, value_area: 800 }
+        },
+        color: {
+            value: ["#ff00ff", "#00ffff", "#ffff00"]
+        },
+        shape: {
+            type: "circle"
+        },
+        opacity: {
+            value: 0.6,
+            random: true,
+            anim: {
+                enable: true,
+                speed: 1,
+                opacity_min: 0.1,
+                sync: false
+            }
+        },
+        size: {
+            value: 3,
+            random: true,
+            anim: {
+                enable: true,
+                speed: 4,
+                size_min: 0.3,
+                sync: false
+            }
+        },
+        line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.2,
+            width: 1
+        },
+        move: {
+            enable: true,
+            speed: 3,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+                enable: true,
+                rotateX: 600,
+                rotateY: 1200
+            }
+        }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onhover: {
+                enable: true,
+                mode: "bubble"
+            },
+            onclick: {
+                enable: true,
+                mode: "push"
+            },
+            resize: true
+        },
+        modes: {
+            bubble: {
+                distance: 200,
+                size: 6,
+                duration: 0.4
+            }
+        }
+    },
+    retina_detect: true
 }); 

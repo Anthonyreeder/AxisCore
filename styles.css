@@ -525,4 +525,76 @@ section {
     font-weight: 600;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     z-index: 1;
+}
+
+#particle-showcase {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 2rem;
+    background: rgba(0, 35, 85, 0.4);
+    backdrop-filter: blur(10px);
+    margin: 2rem 5%;
+    border-radius: 20px;
+}
+
+#particle-showcase h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.particle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.particle-demo {
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.particle-demo:hover {
+    transform: translateY(-5px);
+}
+
+.particle-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.effect-description {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.effect-description h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.effect-description p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .particle-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .particle-container {
+        height: 300px;
+    }
 } 
