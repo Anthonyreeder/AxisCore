@@ -1166,4 +1166,90 @@ section {
 
 .solution-box, .results-box {
     padding: 2.5rem !important;
+}
+
+.process-steps {
+    margin: 3rem 0;
+    position: relative;
+}
+
+.process-step {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.step-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--quantum-primary);
+    opacity: 0.5;
+    min-width: 60px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3 {
+    color: var(--quantum-primary);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-content p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.step-line {
+    position: absolute;
+    left: 30px;
+    top: 60px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        var(--quantum-primary) 0%,
+        rgba(0, 255, 242, 0.1) 100%
+    );
+}
+
+.process-step:last-child {
+    padding-bottom: 0;
+}
+
+.process-step:last-child .step-line {
+    display: none;
+}
+
+.highlight {
+    font-size: 1.4rem;
+    color: var(--quantum-primary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 1rem;
+    border-left: 3px solid var(--quantum-primary);
+}
+
+.solution-box {
+    background: rgba(0, 8, 20, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+/* Add hover effects */
+.process-step:hover .step-number {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.process-step:hover .step-content {
+    transform: translateX(10px);
+    transition: all 0.3s ease;
 } 
