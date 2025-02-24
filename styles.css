@@ -784,8 +784,8 @@ section {
 
 .superposition {
     position: relative;
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 
@@ -1415,4 +1415,16 @@ select.quantum-input {
     outline: none;
     box-shadow: 0 0 15px rgba(0, 255, 242, 0.2);
     border-color: var(--quantum-primary);
+}
+
+/* Add styles for fade-in sections */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 } 
