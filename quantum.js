@@ -5,6 +5,7 @@ class QuantumExperience {
         this.ctx = this.initQuantumField();
         this.particles = [];
         this.lastTime = 0;
+        this.maxParticles = 50; // Limit total particles
         
         this.init();
     }
@@ -34,7 +35,8 @@ class QuantumExperience {
         const deltaTime = timestamp - this.lastTime;
         this.lastTime = timestamp;
 
-        this.ctx.fillStyle = 'rgba(0, 8, 20, 0.1)';
+        // More subtle fade effect
+        this.ctx.fillStyle = 'rgba(0, 8, 20, 0.2)';
         this.ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
         // Update and draw particles
@@ -43,7 +45,7 @@ class QuantumExperience {
         this.particles.forEach(p => {
             p.x += p.speedX;
             p.y += p.speedY;
-            p.life -= 0.003;
+            p.life -= 0.002; // Slower fade out
 
             // Bounce off edges
             if(p.x < 0 || p.x > window.innerWidth) p.speedX *= -1;
@@ -55,26 +57,26 @@ class QuantumExperience {
             this.ctx.fillStyle = p.color + p.life + ')';
             this.ctx.fill();
 
-            // Connect nearby particles
+            // Connect nearby particles with more subtle connections
             this.particles.forEach(p2 => {
                 if(p !== p2) {
                     const dx = p.x - p2.x;
                     const dy = p.y - p2.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     
-                    if(distance < 100) {
+                    if(distance < 150) { // Increased connection distance
                         this.ctx.beginPath();
                         this.ctx.moveTo(p.x, p.y);
                         this.ctx.lineTo(p2.x, p2.y);
-                        this.ctx.strokeStyle = `rgba(0, 255, 242, ${0.2 * Math.min(p.life, p2.life)})`;
+                        this.ctx.strokeStyle = `rgba(0, 255, 242, ${0.1 * Math.min(p.life, p2.life)})`; // More subtle connections
                         this.ctx.stroke();
                     }
                 }
             });
         });
 
-        // Add new particles occasionally
-        if(Math.random() < 0.1) {
+        // Add new particles less frequently and only if under max
+        if(Math.random() < 0.05 && this.particles.length < this.maxParticles) {
             this.particles.push(this.createParticle());
         }
 
@@ -87,23 +89,30 @@ class QuantumExperience {
             if(rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3) {
                 state.querySelector('.superposition')?.classList.add('collapsed');
                 
-                // Create particles around the visible element
-                for(let i = 0; i < 10; i++) {
-                    const x = rect.left + Math.random() * rect.width;
-                    const y = rect.top + Math.random() * rect.height;
-                    this.particles.push(this.createParticle(x, y));
+                // Create fewer particles on scroll
+                if(this.particles.length < this.maxParticles) {
+                    for(let i = 0; i < 5; i++) { // Reduced from 10 to 5
+                        const x = rect.left + Math.random() * rect.width;
+                        const y = rect.top + Math.random() * rect.height;
+                        this.particles.push(this.createParticle(x, y));
+                    }
                 }
             }
         });
     }
 
     init() {
-        // Initial particles
-        for(let i = 0; i < 30; i++) {
+        // Fewer initial particles
+        for(let i = 0; i < 20; i++) {
             this.particles.push(this.createParticle());
         }
         
-        window.addEventListener('scroll', () => this.handleScroll());
+        window.addEventListener('scroll', () => {
+            // Debounce scroll handler
+            if(this.scrollTimeout) clearTimeout(this.scrollTimeout);
+            this.scrollTimeout = setTimeout(() => this.handleScroll(), 50);
+        });
+        
         window.addEventListener('resize', () => {
             const canvas = this.ctx.canvas;
             canvas.width = window.innerWidth;
