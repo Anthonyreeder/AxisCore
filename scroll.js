@@ -45,22 +45,29 @@ class ScrollExperience {
     createSmoke(element) {
         const smoke = document.createElement('canvas');
         smoke.className = 'smoke-effect';
-        smoke.width = 200;
-        smoke.height = 200;
+        // Make canvas fullscreen
+        smoke.width = window.innerWidth;
+        smoke.height = window.innerHeight;
         element.appendChild(smoke);
 
         const ctx = smoke.getContext('2d');
         let particles = [];
         
+        // Get element position for centered smoke
+        const rect = element.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
         // Create smoke particles
-        for(let i = 0; i < 50; i++) {
+        for(let i = 0; i < 100; i++) {
             particles.push({
-                x: smoke.width/2,
-                y: smoke.height/2,
-                vx: (Math.random() - 0.5) * 2,
-                vy: (Math.random() - 2),
-                size: Math.random() * 15 + 5,
-                opacity: Math.random() * 0.5 + 0.5
+                x: centerX,
+                y: centerY,
+                vx: (Math.random() - 0.5) * 4,
+                vy: (Math.random() - 0.5) * 4,
+                size: Math.random() * 20 + 10,
+                opacity: Math.random() * 0.7 + 0.3,
+                hue: Math.random() * 60 - 30  // Slight color variation
             });
         }
 
@@ -70,13 +77,14 @@ class ScrollExperience {
             particles.forEach(p => {
                 p.x += p.vx;
                 p.y += p.vy;
-                p.opacity -= 0.01;
-                p.size += 0.2;
+                p.opacity -= 0.008;  // Slower fade
+                p.size += 0.3;
 
                 if(p.opacity > 0) {
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255,255,255,${p.opacity})`;
+                    // Add slight color variation to the smoke
+                    ctx.fillStyle = `hsla(${p.hue}, 10%, 90%, ${p.opacity})`;
                     ctx.fill();
                 }
             });
