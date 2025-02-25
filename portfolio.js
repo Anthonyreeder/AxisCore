@@ -9,7 +9,7 @@ class PortfolioField {
         this.projects = [
             {
                 id: 'project1',
-                position: { x: 0.3, y: 0.4 },
+                position: { x: 0.25, y: 0.3 },
                 title: 'Intelligent Lead Distribution',
                 description: 'An AI-powered system that revolutionized lead distribution for a major insurance provider, resulting in a 45% increase in conversion rates. The system analyzes agent performance, expertise, and current workload to make intelligent routing decisions.',
                 details: {
@@ -21,7 +21,7 @@ class PortfolioField {
             },
             {
                 id: 'project2',
-                position: { x: 0.7, y: 0.3 },
+                position: { x: 0.75, y: 0.3 },
                 title: 'Predictive Analytics Suite',
                 description: 'A comprehensive analytics platform that transformed financial forecasting for a leading investment firm. The system processes millions of data points to predict market trends and automate reporting.',
                 details: {
@@ -33,7 +33,7 @@ class PortfolioField {
             },
             {
                 id: 'project3',
-                position: { x: 0.5, y: 0.6 },
+                position: { x: 0.5, y: 0.7 },
                 title: 'Multi-System Integration Hub',
                 description: 'A centralized integration hub that seamlessly connects multiple enterprise systems, creating a unified data ecosystem that eliminated data silos and manual processes.',
                 details: {

@@ -1608,20 +1608,20 @@ select.quantum-input {
 .project-details {
     position: absolute;
     bottom: 2rem;
-    left: 2rem;
-    right: 2rem;
-    background: rgba(0, 8, 20, 0.9);
+    left: 50%;
+    transform: translateX(-50%) translateY(150%);
+    width: 80%;
+    max-width: 800px;
+    background: rgba(0, 8, 20, 0.95);
     padding: 1.5rem;
     border-radius: 10px;
     border: 1px solid rgba(0, 255, 242, 0.2);
-    transform: translateY(150%);
     transition: transform 0.3s ease;
     opacity: 0;
-    animation: fadeIn 1s ease;
 }
 
 .project-details.visible {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
 }
 
