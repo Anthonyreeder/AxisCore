@@ -667,11 +667,14 @@ html {
 }
 
 .hero-content h1 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  line-height: 1.2;
+  font-size: clamp(2.75rem, 4vw, 3.75rem);
+  line-height: 1.15;
   letter-spacing: -0.02em;
-  max-width: 850px;
-  margin-bottom: var(--spacing-md);
+  max-width: 900px;
+  margin-bottom: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Services Section Improvements */
@@ -798,11 +801,14 @@ html {
 }
 
 .hero-content h1 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  line-height: 1.2;
+  font-size: clamp(2.75rem, 4vw, 3.75rem);
+  line-height: 1.15;
   letter-spacing: -0.02em;
-  max-width: 850px;
-  margin-bottom: var(--spacing-md);
+  max-width: 900px;
+  margin-bottom: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Enhanced Service Metrics */
@@ -887,8 +893,7 @@ html {
 /* Enhanced Mobile Responsiveness */
 @media (max-width: 768px) {
   .hero-content h1 {
-    font-size: clamp(2rem, 3vw, 2.5rem);
-    letter-spacing: -0.01em;
+    font-size: clamp(2.25rem, 3vw, 2.75rem);
   }
 
   .metric-value {
@@ -1088,8 +1093,7 @@ button {
 /* Mobile Optimizations */
 @media (max-width: 768px) {
   .hero-content h1 {
-    font-size: clamp(2rem, 3vw, 2.5rem);
-    letter-spacing: -0.01em;
+    font-size: clamp(2.25rem, 3vw, 2.75rem);
   }
   
   .cta-button {
@@ -1167,8 +1171,7 @@ button {
 /* Mobile Optimization */
 @media (max-width: 768px) {
   .hero-content h1 {
-    font-size: clamp(2rem, 3vw, 2.5rem);
-    letter-spacing: -0.01em;
+    font-size: clamp(2.25rem, 3vw, 2.75rem);
   }
   
   .cta-button {
@@ -1221,5 +1224,164 @@ button {
   
   .case-study-card {
     break-inside: avoid;
+  }
+}
+
+/* Services Section ROI Focus */
+.business-outcomes {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.business-outcomes h2 {
+  font-size: var(--h2-size);
+  margin-bottom: var(--spacing-md);
+}
+
+.roi-metric {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+}
+
+.roi-metric span {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+}
+
+/* Enhanced Case Studies Layout */
+.case-study-structure {
+  display: grid;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.key-results {
+  background: linear-gradient(to right, var(--background-alt), var(--background));
+  border-left: 6px solid var(--success);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-md) 0;
+}
+
+.key-results-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* Standalone Testimonials Section */
+.testimonials-section {
+  background: linear-gradient(135deg, var(--background), var(--background-alt));
+  padding: var(--spacing-xl) 0;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+.testimonial-card {
+  background: var(--background);
+  border-radius: 12px;
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced Pricing Section */
+.pricing-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  margin: var(--spacing-xl) 0;
+}
+
+.pricing-features {
+  list-style: none;
+  margin: var(--spacing-md) 0;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid rgba(var(--text-secondary), 0.1);
+}
+
+/* Trust Building Elements */
+.trusted-by-section {
+  padding: var(--spacing-xl) 0;
+  background: var(--background-alt);
+}
+
+.team-expertise {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.expertise-card {
+  background: var(--background);
+  border-radius: 12px;
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: clamp(2.25rem, 3vw, 2.75rem);
+  }
+  
+  .cta-button {
+    width: 100%;
+    min-height: 4rem;
+  }
+  
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .pricing-comparison {
+    gap: var(--spacing-lg);
+  }
+  
+  .client-logos {
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+  }
+}
+
+/* Accessibility Improvements */
+.key-results-title i {
+  aria-hidden: "true";
+}
+
+.pricing-features li i {
+  aria-hidden: "true";
+  color: var(--success);
+}
+
+/* Print Optimization */
+@media print {
+  .key-results {
+    border-left: 3pt solid var(--success);
+    background: none;
+  }
+  
+  .pricing-features li {
+    border-bottom: 1pt solid var(--text-secondary);
   }
 }
