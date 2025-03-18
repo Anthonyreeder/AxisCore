@@ -558,32 +558,38 @@
                 'navy-gold': {
                     '--primary': '#001F3F',
                     '--primary-dark': '#00172D',
-                    '--primary-light': '#0A4B91',
                     '--accent': '#CA9E2B', 
                     '--accent-dark': '#A17D1A',
-                    '--accent-light': '#E4B94C',
                     '--primary-gradient': 'linear-gradient(135deg, #001F3F, #0A4B91)',
-                    '--accent-gradient': 'linear-gradient(135deg, #CA9E2B, #E4B94C)'
+                    '--text-primary': '#1e293b',
+                    '--text-secondary': '#475569',
+                    '--background': '#ffffff',
+                    '--background-alt': '#f8fafc',
+                    '--success': '#22c55e'
                 },
                 'monochromatic': {
                     '--primary': '#001F3F',
                     '--primary-dark': '#00172D',
-                    '--primary-light': '#0A4B91',
                     '--accent': '#4F86C6',
                     '--accent-dark': '#2C6CB2',
-                    '--accent-light': '#75A2D9',
                     '--primary-gradient': 'linear-gradient(135deg, #001F3F, #0A4B91)',
-                    '--accent-gradient': 'linear-gradient(135deg, #4F86C6, #75A2D9)'
+                    '--text-primary': '#1e293b',
+                    '--text-secondary': '#475569',
+                    '--background': '#ffffff',
+                    '--background-alt': '#f8fafc',
+                    '--success': '#22c55e'
                 },
                 'navy-teal': {
                     '--primary': '#001F3F',
                     '--primary-dark': '#00172D',
-                    '--primary-light': '#0A4B91',
                     '--accent': '#008B8B',
                     '--accent-dark': '#006666',
-                    '--accent-light': '#00ADAD',
                     '--primary-gradient': 'linear-gradient(135deg, #001F3F, #0A4B91)',
-                    '--accent-gradient': 'linear-gradient(135deg, #008B8B, #00ADAD)'
+                    '--text-primary': '#1e293b',
+                    '--text-secondary': '#475569',
+                    '--background': '#ffffff',
+                    '--background-alt': '#f8fafc',
+                    '--success': '#22c55e'
                 }
             };
             
@@ -635,28 +641,10 @@
                 
                 // Apply each CSS variable from the theme
                 Object.keys(theme).forEach(variable => {
-                    root.style.setProperty(variable, theme[variable]);
+                    document.documentElement.style.setProperty(variable, theme[variable]);
                 });
                 
-                // Update hero section background if it exists
-                const heroSection = document.querySelector('.hero-section');
-                if (heroSection) {
-                    // Get the current background image
-                    const computedStyle = window.getComputedStyle(heroSection);
-                    const currentBg = computedStyle.backgroundImage;
-                    
-                    // Extract the URL part
-                    const bgImageMatch = currentBg.match(/url\(['"]?(.*?)['"]?\)/);
-                    if (bgImageMatch && bgImageMatch[1]) {
-                        const bgImageUrl = bgImageMatch[1];
-                        
-                        // Apply the gradient with the current image
-                        heroSection.style.backgroundImage = `linear-gradient(135deg, 
-                            rgba(${hexToRgb(theme['--primary'])}, 0.85), 
-                            rgba(${hexToRgb(theme['--primary-light'])}, 0.7)
-                        ), url('${bgImageUrl}')`;
-                    }
-                }
+                console.log(`Applied theme: ${themeName}`); // Add logging
             }
             
             // Helper function to convert hex to rgb
