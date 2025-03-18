@@ -545,13 +545,11 @@ html {
 
 /* Reduce motion if user prefers */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  
-  * {
-    transition: none !important;
-    animation: none !important;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -1693,13 +1691,18 @@ button {
   transform: translateX(-50%);
   width: 80%;
   max-width: 1200px;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 31, 63, 0.1),
+    rgba(0, 31, 63, 0.15),
     transparent
   );
+}
+
+/* Remove separators from sections with backgrounds */
+.section.has-background::after {
+  display: none;
 }
 
 /* Icons Refinement */
@@ -1708,7 +1711,8 @@ button {
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: -0.125em;
+  position: relative;
 }
 
 /* Responsive Refinements */
