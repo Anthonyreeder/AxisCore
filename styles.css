@@ -76,13 +76,13 @@ h3 { font-size: 2rem; }
 .hero-section {
   position: relative;
   background-image: linear-gradient(135deg, 
-    rgba(37, 99, 235, 0.3), 
-    rgba(30, 64, 175, 0.1)
-  );
-  background-size: 200% 200%;
-  animation: gradientFlow 15s ease infinite;
+    rgba(0, 31, 63, 0.85), 
+    rgba(0, 31, 63, 0.7)
+  ), url('/path/to/premium-background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: calc(var(--spacing-xl) * 0.75) 0;
   overflow: hidden;
-  padding: var(--spacing-xl) 0;
 }
 
 .hero-section::before {
@@ -109,24 +109,23 @@ h3 { font-size: 2rem; }
 }
 
 .hero-content h1 {
-  font-size: clamp(3rem, 5vw, 3.75rem);
+  font-size: clamp(3.5rem, 6vw, 4.5rem);
   font-family: var(--font-primary);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: var(--spacing-lg);
+  color: white;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: var(--spacing-md);
 }
 
 .hero-subtitle {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   line-height: 1.6;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin-bottom: var(--spacing-xl);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 400;
 }
 
 .hero-credentials {
@@ -174,7 +173,7 @@ h3 { font-size: 2rem; }
 
 .cta-button.primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.5);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
 .cta-button.secondary {
@@ -683,13 +682,13 @@ html {
 .hero-section {
   position: relative;
   background-image: linear-gradient(135deg, 
-    rgba(37, 99, 235, 0.3), 
-    rgba(30, 64, 175, 0.1)
-  );
-  background-size: 200% 200%;
-  animation: gradientFlow 15s ease infinite;
+    rgba(0, 31, 63, 0.85), 
+    rgba(0, 31, 63, 0.7)
+  ), url('/path/to/premium-background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: calc(var(--spacing-xl) * 0.75) 0;
   overflow: hidden;
-  padding: var(--spacing-xl) 0;
 }
 
 .hero-section::before {
@@ -705,24 +704,23 @@ html {
 }
 
 .hero-content h1 {
-  font-size: clamp(3rem, 5vw, 3.75rem);
+  font-size: clamp(3.5rem, 6vw, 4.5rem);
   font-family: var(--font-primary);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: var(--spacing-lg);
+  color: white;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: var(--spacing-md);
 }
 
 .hero-subtitle {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   line-height: 1.6;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin-bottom: var(--spacing-xl);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 400;
 }
 
 /* Services Section Improvements */
@@ -1014,9 +1012,75 @@ button {
   position: sticky;
   top: 0;
   background: var(--background);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   z-index: 100;
   backdrop-filter: blur(8px);
+  padding: 0.75rem 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--container-width);
+  margin: 0 auto;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #001F3F;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.header-cta {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  background: var(--primary-gradient);
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.header-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Services Section ROI Focus */
@@ -1537,4 +1601,189 @@ button {
 .success-text {
   color: var(--success);
   font-weight: 700;
+}
+
+/* Enhanced Header & Navigation */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: var(--background);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  padding: 0.75rem 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--container-width);
+  margin: 0 auto;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #001F3F;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.header-cta {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  background: var(--primary-gradient);
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.header-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Section Spacing */
+.section {
+  padding: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 1200px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 31, 63, 0.1),
+    transparent
+  );
+}
+
+/* Icons Refinement */
+.icon {
+  fill: currentColor;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Responsive Refinements */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0.75rem 0;
+  }
+  
+  .logo {
+    height: 32px;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 3.25rem);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .hero-cta,
+  .header-cta {
+    padding: 1rem 1.75rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  h2 {
+    font-size: 2.25rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Adding subtle animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.visible {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Ensure animations respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll.visible {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Improved focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
 }
