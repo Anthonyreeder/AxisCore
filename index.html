@@ -516,68 +516,161 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Theme Switcher (Temporary) -->
+    <div id="theme-switcher">
+        <div class="theme-switcher-toggle">
+            <span>Theme</span>
+            <i class="fas fa-palette"></i>
+        </div>
+        
+        <div class="theme-switcher-options">
+            <div class="theme-option" data-theme="navy-gold">
+                <div class="color-preview">
+                    <span class="color-swatch" style="background: #001F3F"></span>
+                    <span class="color-swatch" style="background: #CA9E2B"></span>
+                </div>
+                <span>Navy & Gold</span>
+            </div>
+            
+            <div class="theme-option" data-theme="monochromatic">
+                <div class="color-preview">
+                    <span class="color-swatch" style="background: #001F3F"></span>
+                    <span class="color-swatch" style="background: #4F86C6"></span>
+                </div>
+                <span>Monochromatic Navy</span>
+            </div>
+            
+            <div class="theme-option" data-theme="navy-teal">
+                <div class="color-preview">
+                    <span class="color-swatch" style="background: #001F3F"></span>
+                    <span class="color-swatch" style="background: #008B8B"></span>
+                </div>
+                <span>Navy & Teal</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Switcher JavaScript (Temporary) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS animation library
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100,
-                disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-            });
+            // Theme definitions
+            const themes = {
+                'navy-gold': {
+                    '--primary': '#001F3F',
+                    '--primary-dark': '#00172D',
+                    '--primary-light': '#0A4B91',
+                    '--accent': '#CA9E2B', 
+                    '--accent-dark': '#A17D1A',
+                    '--accent-light': '#E4B94C',
+                    '--primary-gradient': 'linear-gradient(135deg, #001F3F, #0A4B91)',
+                    '--accent-gradient': 'linear-gradient(135deg, #CA9E2B, #E4B94C)'
+                },
+                'monochromatic': {
+                    '--primary': '#001F3F',
+                    '--primary-dark': '#00172D',
+                    '--primary-light': '#0A4B91',
+                    '--accent': '#4F86C6',
+                    '--accent-dark': '#2C6CB2',
+                    '--accent-light': '#75A2D9',
+                    '--primary-gradient': 'linear-gradient(135deg, #001F3F, #0A4B91)',
+                    '--accent-gradient': 'linear-gradient(135deg, #4F86C6, #75A2D9)'
+                },
+                'navy-teal': {
+                    '--primary': '#001F3F',
+                    '--primary-dark': '#00172D',
+                    '--primary-light': '#0A4B91',
+                    '--accent': '#008B8B',
+                    '--accent-dark': '#006666',
+                    '--accent-light': '#00ADAD',
+                    '--primary-gradient': 'linear-gradient(135deg, #001F3F, #0A4B91)',
+                    '--accent-gradient': 'linear-gradient(135deg, #008B8B, #00ADAD)'
+                }
+            };
             
-            // Lazy loading images
-            const lazyImages = document.querySelectorAll('.lazy-image');
+            // Theme switcher functionality
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const themeOptions = document.querySelectorAll('.theme-option');
+            const root = document.documentElement;
             
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.classList.add('loaded');
-                            imageObserver.unobserve(img);
-                        }
-                    });
-                });
+            // Check for saved theme in localStorage
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme && themes[savedTheme]) {
+                applyTheme(savedTheme);
                 
-                lazyImages.forEach(img => {
-                    imageObserver.observe(img);
-                });
-            } else {
-                // Fallback for browsers without IntersectionObserver support
-                lazyImages.forEach(img => {
-                    img.classList.add('loaded');
+                // Mark the saved theme as active
+                themeOptions.forEach(option => {
+                    if (option.getAttribute('data-theme') === savedTheme) {
+                        option.classList.add('active');
+                    }
                 });
             }
             
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
+            // Toggle theme switcher on click
+            document.querySelector('.theme-switcher-toggle').addEventListener('click', function() {
+                themeSwitcher.classList.toggle('active');
+            });
+            
+            // Apply theme when option is clicked
+            themeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedTheme = this.getAttribute('data-theme');
                     
-                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                        // Skip animation for users who prefer reduced motion
-                        const targetId = this.getAttribute('href').substring(1);
-                        const targetElement = document.getElementById(targetId);
-                        
-                        if (targetElement) {
-                            targetElement.scrollIntoView();
-                        }
-                    } else {
-                        const targetId = this.getAttribute('href').substring(1);
-                        const targetElement = document.getElementById(targetId);
-                        
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 100,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
+                    // Remove active class from all options
+                    themeOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to selected option
+                    this.classList.add('active');
+                    
+                    // Apply the selected theme
+                    applyTheme(selectedTheme);
+                    
+                    // Save selection to localStorage
+                    localStorage.setItem('selectedTheme', selectedTheme);
                 });
             });
+            
+            // Function to apply theme
+            function applyTheme(themeName) {
+                const theme = themes[themeName];
+                
+                // Apply each CSS variable from the theme
+                Object.keys(theme).forEach(variable => {
+                    root.style.setProperty(variable, theme[variable]);
+                });
+                
+                // Update hero section background if it exists
+                const heroSection = document.querySelector('.hero-section');
+                if (heroSection) {
+                    // Get the current background image
+                    const computedStyle = window.getComputedStyle(heroSection);
+                    const currentBg = computedStyle.backgroundImage;
+                    
+                    // Extract the URL part
+                    const bgImageMatch = currentBg.match(/url\(['"]?(.*?)['"]?\)/);
+                    if (bgImageMatch && bgImageMatch[1]) {
+                        const bgImageUrl = bgImageMatch[1];
+                        
+                        // Apply the gradient with the current image
+                        heroSection.style.backgroundImage = `linear-gradient(135deg, 
+                            rgba(${hexToRgb(theme['--primary'])}, 0.85), 
+                            rgba(${hexToRgb(theme['--primary-light'])}, 0.7)
+                        ), url('${bgImageUrl}')`;
+                    }
+                }
+            }
+            
+            // Helper function to convert hex to rgb
+            function hexToRgb(hex) {
+                // Remove # if present
+                hex = hex.replace('#', '');
+                
+                // Parse the hex values
+                const r = parseInt(hex.substring(0, 2), 16);
+                const g = parseInt(hex.substring(2, 4), 16);
+                const b = parseInt(hex.substring(4, 6), 16);
+                
+                return `${r}, ${g}, ${b}`;
+            }
         });
     </script>
 </body>

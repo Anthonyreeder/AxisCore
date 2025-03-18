@@ -2216,3 +2216,97 @@ select:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* Theme Switcher (Temporary) - Will be removed after theme selection */
+#theme-switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 220px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    font-family: var(--font-primary);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(calc(100% - 40px));
+}
+
+#theme-switcher:hover,
+#theme-switcher.active {
+    transform: translateY(0);
+}
+
+.theme-switcher-toggle {
+    padding: 10px 15px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.theme-switcher-options {
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.theme-option {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.theme-option:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.theme-option.active {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.color-preview {
+    display: flex;
+    margin-right: 10px;
+}
+
+.color-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Color Themes */
+:root {
+    /* Default Theme: Navy & Gold */
+    --primary: #001F3F;
+    --primary-dark: #00172D;
+    --primary-light: #0A4B91;
+    --accent: #CA9E2B;
+    --accent-dark: #A17D1A;
+    --accent-light: #E4B94C;
+    --primary-gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
+    --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
+}
+
+/* Theme transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* For hero section and other background elements to transition */
+[style*="background-image"] {
+    transition: background-image 0.3s ease;
+}
