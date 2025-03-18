@@ -3,547 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AxisCore | Enterprise Salesforce Solutions</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <title>AxisCore - Expert Salesforce Solutions</title>
+    <meta name="description" content="Drive business growth with expert custom Salesforce solutions. Schedule a free consultation today.">
+    
+    <!-- Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Integration -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <a href="/">AxisCore</a>
-            </div>
-            <div class="nav-links">
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <img src="assets/images/axiscore-logo.svg" alt="AxisCore Logo" class="logo">
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#home">Home</a>
                 <a href="#services">Services</a>
-                <a href="#work">Our Work</a>
-                <a href="#approach">Approach</a>
-                <a href="#about">About</a>
-            </div>
-            <button class="cta-button secondary">Contact</button>
-            <button class="theme-toggle" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#team">Our Team</a>
+            </nav>
+            
+            <a href="#contact" class="header-cta">Schedule a Free Consultation</a>
+        </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>No More Workarounds—We Build Salesforce Solutions That Scale With You</h1>
-                    <p class="hero-subtitle">Custom development, integrations, and optimization that solve real business problems—not just technical ones.</p>
-                    <div class="cta-group">
-                        <button class="cta-button primary">Let's Talk</button>
-                        <button class="cta-button secondary">See Our Work</button>
-                    </div>
-                    <div class="hero-credentials">
-                        <span><i class="fa-solid fa-certificate"></i> Certified Salesforce Developer</span>
-                        <span><i class="fa-solid fa-check-circle"></i> 50+ Successful Projects</span>
-                        <span><i class="fa-solid fa-clock"></i> 10+ Years Experience</span>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="hero-gradient">
-                        <!-- Animated gradient background will be styled in CSS -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pain Points Section -->
-        <section id="pain-points" class="pain-points-section">
-            <div class="container">
-                <h2 class="section-title">What's Holding Your Team Back?</h2>
-                <div class="pain-points-grid">
-                    <div class="pain-point-card">
-                        <div class="pain-point-icon"><i class="fas fa-sync-alt"></i></div>
-                        <h3>Manual Workflows Slowing You Down</h3>
-                        <p>Your team spends hours on tasks that should be automated, creating bottlenecks and errors.</p>
-                    </div>
-                    <div class="pain-point-card">
-                        <div class="pain-point-icon"><i class="fas fa-puzzle-piece"></i></div>
-                        <h3>Disconnected Systems & Data Silos</h3>
-                        <p>Critical information is trapped across platforms, preventing a unified view of your business.</p>
-                    </div>
-                    <div class="pain-point-card">
-                        <div class="pain-point-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Limited Reporting & Insights</h3>
-                        <p>You can't get the data visualizations and metrics needed to make strategic decisions.</p>
-                    </div>
-                    <div class="pain-point-card">
-                        <div class="pain-point-icon"><i class="fas fa-code"></i></div>
-                        <h3>Complex Technical Requirements</h3>
-                        <p>You need custom functionality that goes beyond standard Salesforce capabilities.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section - Problem/Solution Format -->
-        <section id="services" class="services-section">
-            <div class="container">
-                <h2 class="section-title">How We Transform Your Salesforce Experience</h2>
-                
-                <div class="problem-solution-grid">
-                    <!-- Problem/Solution Pair 1 -->
-                    <div class="problem-solution-pair">
-                        <div class="problem-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-exclamation-circle"></i></div>
-                                <h3>The Problem</h3>
-                            </div>
-                            <h4>"We're drowning in manual processes"</h4>
-                            <p>Your team wastes valuable time on repetitive tasks, leading to errors and delays that impact your customer experience.</p>
-                        </div>
-                        
-                        <div class="connector">
-                            <i class="fas fa-long-arrow-alt-right"></i>
-                        </div>
-                        
-                        <div class="solution-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-check-circle"></i></div>
-                                <h3>Our Solution</h3>
-                            </div>
-                            <h4>Custom Automation & Workflows</h4>
-                            <p>We automate your critical business processes so your team can focus on strategy and growth.</p>
-                            <div class="success-metric">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Clients typically see a 65% reduction in manual tasks</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Problem/Solution Pair 2 -->
-                    <div class="problem-solution-pair">
-                        <div class="problem-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-exclamation-circle"></i></div>
-                                <h3>The Problem</h3>
-                            </div>
-                            <h4>"Salesforce doesn't fit our exact needs"</h4>
-                            <p>You're forced to adapt your business processes to Salesforce limitations, creating inefficiencies and frustration.</p>
-                        </div>
-                        
-                        <div class="connector">
-                            <i class="fas fa-long-arrow-alt-right"></i>
-                        </div>
-                        
-                        <div class="solution-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-check-circle"></i></div>
-                                <h3>Our Solution</h3>
-                            </div>
-                            <h4>Tailored Apex Development</h4>
-                            <p>We customize Salesforce to match your business—not the other way around—through bespoke development.</p>
-                            <div class="success-metric">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Clients report 40% improved team adoption after customization</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Problem/Solution Pair 3 -->
-                    <div class="problem-solution-pair">
-                        <div class="problem-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-exclamation-circle"></i></div>
-                                <h3>The Problem</h3>
-                            </div>
-                            <h4>"Our integrations keep breaking"</h4>
-                            <p>Your business depends on connected systems, but fragile integrations cause data loss and constant maintenance headaches.</p>
-                        </div>
-                        
-                        <div class="connector">
-                            <i class="fas fa-long-arrow-alt-right"></i>
-                        </div>
-                        
-                        <div class="solution-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-check-circle"></i></div>
-                                <h3>Our Solution</h3>
-                            </div>
-                            <h4>Robust System Integrations</h4>
-                            <p>We build resilient, future-proof connections between Salesforce and your critical business systems.</p>
-                            <div class="success-metric">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Clients achieve 99.8% uptime with our integration solutions</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="services-cta">
-                    <p>Need a solution that addresses multiple challenges?</p>
-                    <button class="cta-button secondary">Let's Build Your Custom Solution</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Process Section -->
-        <section id="approach" class="process-section">
-            <div class="container">
-                <h2 class="section-title">Our Proven Development Process</h2>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Discovery & Analysis</h3>
-                            <p>We start by deeply understanding your business processes, pain points, and objectives—not just technical requirements.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Strategic Planning</h3>
-                            <p>We design solutions that address your current needs while building a foundation for future growth and scalability.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Agile Development</h3>
-                            <p>Our iterative approach delivers value quickly, with regular check-ins and adjustments to ensure alignment with your goals.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>Testing & Validation</h3>
-                            <p>Rigorous testing ensures your solution works flawlessly across all scenarios and edge cases.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h3>Deployment & Training</h3>
-                            <p>We implement with minimal disruption and ensure your team is fully equipped to leverage your new solution.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Case Studies Section -->
-        <section id="work" class="case-studies-section">
-            <div class="container">
-                <h2 class="section-title">Success Stories</h2>
-                <p class="section-subtitle">Real results for real businesses</p>
-                
-                <div class="case-studies-grid">
-                    <div class="case-study-card">
-                        <div class="case-study-image">
-                            <!-- Placeholder for case study image -->
-                        </div>
-                        <div class="case-study-content">
-                            <span class="industry-tag">Manufacturing</span>
-                            <h3>78% Faster Order Processing</h3>
-                            <p>Custom integration between Salesforce and ERP system eliminated manual data entry and accelerated the sales-to-fulfillment pipeline.</p>
-                            <a href="#" class="text-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="case-study-card">
-                        <div class="case-study-image">
-                            <!-- Placeholder for case study image -->
-                        </div>
-                        <div class="case-study-content">
-                            <span class="industry-tag">Financial Services</span>
-                            <h3>£3.2M Additional Revenue</h3>
-                            <p>Custom client management application identified cross-sell opportunities that were previously missed in the manual process.</p>
-                            <a href="#" class="text-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="case-study-card">
-                        <div class="case-study-image">
-                            <!-- Placeholder for case study image -->
-                        </div>
-                        <div class="case-study-content">
-                            <span class="industry-tag">Healthcare</span>
-                            <h3>23% Increase in Customer Satisfaction</h3>
-                            <p>Automated patient communication workflows and integration with electronic health records transformed the patient experience.</p>
-                            <a href="#" class="text-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="view-all-link">
-                    <a href="/case-studies" class="button-link">View All Case Studies <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Investment Section (Replaces Pricing) -->
-        <section id="investment" class="investment-section">
-            <div class="container">
-                <h2 class="section-title">Investment in Your Success</h2>
-                <p class="section-subtitle">Transparent, value-based pricing that scales with your needs</p>
-                
-                <div class="investment-approach">
-                    <div class="investment-content">
-                        <h3>How We Structure Our Engagements</h3>
-                        <p>We believe in transparency and aligning our success with yours. Our pricing is structured to deliver maximum value whether you're a growing business or an established enterprise.</p>
-                        
-                        <div class="investment-ranges">
-                            <div class="investment-range">
-                                <h4>Quick-Win Solutions</h4>
-                                <p class="range">Starting at £2,500</p>
-                                <p>Targeted optimizations and automations that solve specific pain points within 2-4 weeks.</p>
-                            </div>
-                            
-                            <div class="investment-range">
-                                <h4>Integration Projects</h4>
-                                <p class="range">Typically £5,000 - £15,000</p>
-                                <p>Connecting critical systems with robust, bidirectional data flows. Timeline: 4-8 weeks.</p>
-                            </div>
-                            
-                            <div class="investment-range">
-                                <h4>Custom Development</h4>
-                                <p class="range">Tailored to scope</p>
-                                <p>Enterprise-grade solutions with bespoke functionality, designed for your unique business needs.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="roi-highlight">
-                        <div class="roi-card">
-                            <h4><i class="fas fa-chart-line"></i> Return on Investment</h4>
-                            <p class="roi-quote">"Anthony's solution paid for itself within 3 months through efficiency gains and error reduction. Two years later, we're still seeing the benefits."</p>
-                            <div class="roi-author">
-                                <p><strong>Sarah Johnson</strong></p>
-                                <p>CTO, Meridian Manufacturing</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="investment-cta">
-                    <button class="cta-button primary">Get Your Tailored Quote</button>
-                    <p>No commitment required - let's discuss your goals and find the right approach</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials-section">
-            <div class="container">
-                <h2 class="section-title">What Clients Say</h2>
-                
-                <div class="testimonial-slider">
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <p class="testimonial-text">Anthony didn't just deliver a technical solution—he transformed how our business operates. His deep understanding of both Salesforce and our industry challenges made all the difference.</p>
-                            <div class="testimonial-author">
-                                <div class="author-info">
-                                    <h4>Sarah Johnson</h4>
-                                    <p>CTO, Meridian Manufacturing</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <p class="testimonial-text">We tried twice before to get our systems integrated properly. AxisCore finally got it right—on time and without the constant change orders we experienced with other consultants.</p>
-                            <div class="testimonial-author">
-                                <div class="author-info">
-                                    <h4>Michael Chen</h4>
-                                    <p>Operations Director, FinTech Solutions</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <p class="testimonial-text">The custom reporting dashboard Anthony built has completely changed how we make decisions. We now have real-time insights that used to take our team days to compile manually.</p>
-                            <div class="testimonial-author">
-                                <div class="author-info">
-                                    <h4>Rebecca Thomas</h4>
-                                    <p>Sales Director, Helix Healthcare</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-controls">
-                    <button class="prev-testimonial" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
-                    <div class="testimonial-indicators">
-                        <span class="indicator active"></span>
-                        <span class="indicator"></span>
-                        <span class="indicator"></span>
-                    </div>
-                    <button class="next-testimonial" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action Section -->
-        <section id="cta" class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to transform your Salesforce experience?</h2>
-                    <p>Book a free 30-minute consultation to discuss your challenges and how we can solve them.</p>
-                    <div class="cta-buttons">
-                        <button class="cta-button primary">Schedule Your Consultation</button>
-                        <p class="cta-guarantee"><i class="fas fa-shield-alt"></i> No pressure, no obligations—just solutions.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="faq-section">
-            <div class="container">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>How much do your services typically cost?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Our pricing is based on the scope and complexity of your project. Simple integration projects typically start at £2,500, while larger custom development initiatives are generally structured as time and materials with transparent hourly rates. During our consultation, we'll provide a detailed estimate based on your specific needs.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>How long do projects usually take?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Project timelines vary based on complexity. Simple integrations can be completed in 2-4 weeks, while comprehensive custom development may take 2-3 months. We prioritize delivering value incrementally, so you'll see progress throughout the project rather than waiting for a final delivery date.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Do you provide support after the project is complete?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Yes, we offer flexible support packages tailored to your needs. These range from basic break-fix support to comprehensive managed services that include regular enhancements and optimizations. All projects include a 30-day warranty period for any issues that might arise post-launch.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>How do you handle project management and communication?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>We use an agile approach with weekly check-ins to ensure alignment throughout the project. You'll have access to our project management system to track progress in real time, and we're available via email, phone, or video call as needed. Transparent communication is a core value for us.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>What if we're not satisfied with the work?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Your satisfaction is our priority. We build regular review points into every project to catch and address any concerns early. If at any point you're not satisfied with our work, we'll make it right—whether that means revisions or adjustments to ensure the final solution meets your expectations.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2 class="section-title">About AxisCore</h2>
-                        <p>AxisCore was founded with a simple mission: help businesses extract maximum value from their Salesforce investment through thoughtful, purpose-built solutions.</p>
-                        <p>Unlike larger consulting firms that delegate your project to junior developers, your work is handled directly by Anthony, a certified Salesforce developer with over a decade of experience solving complex CRM challenges for businesses of all sizes.</p>
-                        <p>This direct approach means better communication, higher quality work, and solutions that truly address your business needs—not just technical requirements.</p>
-                        <div class="credentials">
-                            <div class="credential">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certified Salesforce Developer</span>
-                            </div>
-                            <div class="credential">
-                                <i class="fas fa-award"></i>
-                                <span>10+ Years Experience</span>
-                            </div>
-                            <div class="credential">
-                                <i class="fas fa-users"></i>
-                                <span>50+ Satisfied Clients</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-image">
-                        <!-- Placeholder for founder image -->
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>AxisCore</h3>
-                    <p>Enterprise Salesforce Solutions</p>
+            <div class="hero-content" data-aos="fade-up">
+                <h1>Drive Business Growth with Expert Custom Salesforce Solutions</h1>
+                <p class="hero-subtitle">We help enterprise businesses streamline workflows, increase productivity, and maximize ROI with tailored Salesforce implementations.</p>
+                
+                <div class="cta-group">
+                    <a href="#contact" class="cta-button primary">
+                        Schedule a Free Consultation
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#case-studies" class="cta-button secondary">
+                        View Case Studies
+                    </a>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#custom-dev">Custom Development</a></li>
-                            <li><a href="#integrations">Integrations</a></li>
-                            <li><a href="#optimization">System Optimization</a></li>
-                            <li><a href="/services">All Services</a></li>
-                        </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section id="problems" class="section problems-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">What's Holding Your Team Back?</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Common challenges faced by enterprise businesses before implementing our solutions.</p>
+            
+            <div class="problem-solution-grid">
+                <div class="problem-solution-pair" data-aos="fade-up">
+                    <h3>Manual Workflows Slowing You Down</h3>
+                    <p class="problem-description">Time-consuming manual processes are reducing productivity and increasing errors in your data management.</p>
+                </div>
+                
+                <div class="problem-solution-pair" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Disconnected Systems Creating Silos</h3>
+                    <p class="problem-description">Fragmented systems are preventing seamless data flow, creating information gaps and redundancies.</p>
+                </div>
+                
+                <div class="problem-solution-pair" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Inadequate Reporting and Visibility</h3>
+                    <p class="problem-description">Limited insights into customer data and business performance are hindering strategic decision-making.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section has-background">
+        <div class="container">
+            <div class="business-outcomes" data-aos="fade-up">
+                <h2 class="section-title">How We Transform Your Salesforce Experience</h2>
+                <p class="section-subtitle">Our ROI-driven approach delivers measurable business impact.</p>
+            </div>
+            
+            <div class="problem-solution-grid">
+                <div class="problem-solution-pair" data-aos="fade-up">
+                    <div class="solution-icon">
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#work">Case Studies</a></li>
-                            <li><a href="#blog">Blog</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
+                    <h3>Automated Workflow Solutions</h3>
+                    <p>We implement custom automation that eliminates repetitive tasks and streamlines your business processes.</p>
+                    
+                    <div class="success-metric">
+                        <div class="metric-value" aria-label="Productivity Increase">
+                            <i class="fas fa-chart-line metric-icon"></i>
+                            65%
+                        </div>
+                        <p>Reduction in manual work through automated workflows</p>
                     </div>
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul class="social-links">
-                            <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                            <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
-                            <li><a href="mailto:contact@axiscore.com"><i class="fas fa-envelope"></i> Email</a></li>
-                        </ul>
+                </div>
+                
+                <div class="problem-solution-pair" data-aos="fade-up" data-aos-delay="100">
+                    <div class="solution-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Seamless System Integration</h3>
+                    <p>Connect Salesforce with your existing systems to create a unified data ecosystem and eliminate silos.</p>
+                    
+                    <div class="success-metric">
+                        <div class="metric-value" aria-label="Data Accuracy">
+                            <i class="fas fa-check-circle metric-icon"></i>
+                            98%
+                        </div>
+                        <p>Data consistency across integrated systems</p>
+                    </div>
+                </div>
+                
+                <div class="problem-solution-pair" data-aos="fade-up" data-aos-delay="200">
+                    <div class="solution-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Advanced Analytics & Reporting</h3>
+                    <p>Custom dashboards and reports that provide actionable insights and drive data-informed decisions.</p>
+                    
+                    <div class="success-metric">
+                        <div class="metric-value" aria-label="Decision Speed">
+                            <i class="fas fa-tachometer-alt metric-icon"></i>
+                            70%
+                        </div>
+                        <p>Faster business decision-making with real-time analytics</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="section case-studies-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Success Stories</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">See how we've helped businesses like yours achieve measurable results.</p>
+            
+            <div class="case-studies-grid">
+                <div class="case-study-card" data-aos="fade-up">
+                    <div class="case-study-image">
+                        <img src="assets/images/case-study-1.jpg" alt="Manufacturing company dashboard" class="lazy-image">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="industry-tag">Manufacturing</span>
+                        <h3>Global Manufacturing Firm</h3>
+                        
+                        <div class="case-study-problem">
+                            <h4><i class="fas fa-exclamation-circle"></i> Problem</h4>
+                            <p>Complex order processing was causing delays and errors in fulfillment.</p>
+                        </div>
+                        
+                        <div class="case-study-solution">
+                            <h4><i class="fas fa-lightbulb"></i> Solution</h4>
+                            <p>Custom Salesforce implementation with automated order workflows and integrated ERP connection.</p>
+                        </div>
+                        
+                        <div class="key-results">
+                            <h4 class="key-results-title"><i class="fas fa-trophy"></i> Key Results</h4>
+                            <div class="metric-highlight">
+                                <i class="fas fa-clock"></i>
+                                <span>78% Faster Order Processing in 3 Months</span>
+                            </div>
+                            <div class="metric-highlight">
+                                <i class="fas fa-check-double"></i>
+                                <span>99.2% Order Accuracy (up from 87%)</span>
+                            </div>
+                            <div class="metric-highlight">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>$1.2M Annual Cost Savings</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="text-link read-case-study">
+                            Read Full Case Study
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="case-study-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="case-study-image">
+                        <img src="assets/images/case-study-2.jpg" alt="Healthcare provider dashboard" class="lazy-image">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="industry-tag">Healthcare</span>
+                        <h3>Regional Healthcare Provider</h3>
+                        
+                        <div class="case-study-problem">
+                            <h4><i class="fas fa-exclamation-circle"></i> Problem</h4>
+                            <p>Patient data was siloed across multiple systems, creating inefficiencies in care coordination.</p>
+                        </div>
+                        
+                        <div class="case-study-solution">
+                            <h4><i class="fas fa-lightbulb"></i> Solution</h4>
+                            <p>Integrated Health Cloud implementation with custom patient journey mapping and HIPAA-compliant data workflows.</p>
+                        </div>
+                        
+                        <div class="key-results">
+                            <h4 class="key-results-title"><i class="fas fa-trophy"></i> Key Results</h4>
+                            <div class="metric-highlight">
+                                <i class="fas fa-user-md"></i>
+                                <span>32% Increase in Provider Productivity</span>
+                            </div>
+                            <div class="metric-highlight">
+                                <i class="fas fa-hospital-user"></i>
+                                <span>24% Improvement in Patient Satisfaction</span>
+                            </div>
+                            <div class="metric-highlight">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span>53% Reduction in Administrative Tasks</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="text-link read-case-study">
+                            Read Full Case Study
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials-section has-background">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">What Our Clients Say</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Hear directly from decision-makers about their experience working with us.</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-content">
+                        <div class="testimonial-author-image">
+                            <img src="assets/images/testimonial-1.jpg" alt="Sarah Johnson" class="lazy-image">
+                        </div>
+                        <div>
+                            <p class="testimonial-text">"AxisCore transformed our Salesforce implementation from a cumbersome system to a streamlined powerhouse. Their team's expertise and attention to detail resulted in automation that saved our team countless hours and significantly improved our data quality."</p>
+                            <div class="testimonial-author">
+                                <strong>Sarah Johnson</strong>
+                                <p class="author-title">CTO, Global Manufacturing Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-content">
+                        <div class="testimonial-author-image">
+                            <img src="assets/images/testimonial-2.jpg" alt="Robert Chen" class="lazy-image">
+                        </div>
+                        <div>
+                            <p class="testimonial-text">"Working with AxisCore was a game-changer for our sales operations. Their custom reporting solutions gave us insights we never had before, directly contributing to a 28% increase in our conversion rates within the first quarter after implementation."</p>
+                            <div class="testimonial-author">
+                                <strong>Robert Chen</strong>
+                                <p class="author-title">VP of Sales, TechSolutions Ltd.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-content">
+                        <div class="testimonial-author-image">
+                            <img src="assets/images/testimonial-3.jpg" alt="Jennifer Williams" class="lazy-image">
+                        </div>
+                        <div>
+                            <p class="testimonial-text">"As a Salesforce Admin, I've worked with many consultants, but AxisCore stands out for their technical expertise and business acumen. They don't just implement solutions, they partner with you to ensure everything drives real business value."</p>
+                            <div class="testimonial-author">
+                                <strong>Jennifer Williams</strong>
+                                <p class="author-title">Salesforce Admin, HealthPartners</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section id="trusted-by" class="section trusted-by-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Trusted By Industry Leaders</h2>
+            
+            <div class="client-logos" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/images/client-logo-1.svg" alt="Client logo" class="client-logo">
+                <img src="assets/images/client-logo-2.svg" alt="Client logo" class="client-logo">
+                <img src="assets/images/client-logo-3.svg" alt="Client logo" class="client-logo">
+                <img src="assets/images/client-logo-4.svg" alt="Client logo" class="client-logo">
+                <img src="assets/images/client-logo-5.svg" alt="Client logo" class="client-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section pricing-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Transparent, Value-Based Pricing</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Choose the service level that matches your business needs.</p>
+            
+            <div class="pricing-comparison">
+                <div class="pricing-tier" data-aos="fade-up">
+                    <h3>Implementation</h3>
+                    <p>Complete Salesforce setup and customization for new implementations or major overhauls.</p>
+                    
+                    <div class="pricing-price">From $25,000</div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Needs Assessment & Strategy</li>
+                        <li><i class="fas fa-check"></i> Custom Configuration</li>
+                        <li><i class="fas fa-check"></i> Data Migration</li>
+                        <li><i class="fas fa-check"></i> User Training</li>
+                        <li><i class="fas fa-check"></i> 30-Day Post-Launch Support</li>
+                    </ul>
+                    
+                    <a href="#contact" class="cta-button primary">Get a Custom Quote</a>
+                </div>
+                
+                <div class="pricing-tier" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Enhancement</h3>
+                    <p>Targeted improvements to your existing Salesforce instance to unlock new capabilities.</p>
+                    
+                    <div class="pricing-price">From $10,000</div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> System Assessment</li>
+                        <li><i class="fas fa-check"></i> Custom Development</li>
+                        <li><i class="fas fa-check"></i> Integration Services</li>
+                        <li><i class="fas fa-check"></i> Process Automation</li>
+                        <li><i class="fas fa-check"></i> Knowledge Transfer</li>
+                    </ul>
+                    
+                    <a href="#contact" class="cta-button primary">Get a Custom Quote</a>
+                </div>
+                
+                <div class="pricing-tier" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Managed Services</h3>
+                    <p>Ongoing support and optimization to keep your Salesforce ecosystem running at peak performance.</p>
+                    
+                    <div class="pricing-price">From $3,500/month</div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Dedicated Success Manager</li>
+                        <li><i class="fas fa-check"></i> Regular Health Checks</li>
+                        <li><i class="fas fa-check"></i> User Support</li>
+                        <li><i class="fas fa-check"></i> System Maintenance</li>
+                        <li><i class="fas fa-check"></i> Quarterly Strategy Reviews</li>
+                    </ul>
+                    
+                    <a href="#contact" class="cta-button primary">Get a Custom Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team-section has-background">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Meet Our Expert Team</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Certified Salesforce professionals with deep industry experience.</p>
+            
+            <div class="team-expertise">
+                <div class="expertise-card" data-aos="fade-up">
+                    <img src="assets/images/team-1.jpg" alt="Team member" class="team-image">
+                    <h3>Alex Morgan</h3>
+                    <p class="team-title">Founder & CTO</p>
+                    <p>Salesforce MVP with over 15 years of enterprise implementation experience across multiple industries.</p>
+                    <div class="team-credentials">
+                        <span><i class="fas fa-certificate"></i> Certified Technical Architect</span>
+                        <span><i class="fas fa-award"></i> 7x Certified</span>
+                    </div>
+                </div>
+                
+                <div class="expertise-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/team-2.jpg" alt="Team member" class="team-image">
+                    <h3>Maria Chen</h3>
+                    <p class="team-title">Lead Solution Architect</p>
+                    <p>Healthcare and financial services specialist with a focus on compliance and security in complex implementations.</p>
+                    <div class="team-credentials">
+                        <span><i class="fas fa-certificate"></i> System Architect</span>
+                        <span><i class="fas fa-award"></i> 5x Certified</span>
+                    </div>
+                </div>
+                
+                <div class="expertise-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/images/team-3.jpg" alt="Team member" class="team-image">
+                    <h3>James Wilson</h3>
+                    <p class="team-title">Integration Specialist</p>
+                    <p>Expert in connecting Salesforce with enterprise systems including ERP, marketing automation, and custom applications.</p>
+                    <div class="team-credentials">
+                        <span><i class="fas fa-certificate"></i> Application Architect</span>
+                        <span><i class="fas fa-award"></i> 6x Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Let's Start a Conversation</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Schedule your free consultation to discuss how we can drive business growth through your Salesforce implementation.</p>
+            
+            <div class="contact-container" data-aos="fade-up" data-aos-delay="200">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="message">How can we help?</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="cta-button primary full-width">Schedule Consultation</button>
+                </form>
+                
+                <div class="contact-info">
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@axiscore.com">info@axiscore.com</a>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+18005551234">(800) 555-1234</a>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <address>123 Tech Drive, Suite 500<br>San Francisco, CA 94105</address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/images/axiscore-logo-white.svg" alt="AxisCore Logo" class="footer-logo">
+                    <p>Expert Salesforce solutions that drive measurable business growth for enterprise organizations.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#case-studies">Case Studies</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    
+                    <div class="certifications">
+                        <img src="assets/images/salesforce-partner.svg" alt="Salesforce Partner" class="certification-logo">
+                        <img src="assets/images/appexchange-partner.svg" alt="AppExchange Partner" class="certification-logo">
+                    </div>
+                </div>
+            </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2023 AxisCore. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="/privacy">Privacy Policy</a>
-                    <a href="/terms">Terms of Service</a>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS animation library
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            });
+            
+            // Lazy loading images
+            const lazyImages = document.querySelectorAll('.lazy-image');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver support
+                lazyImages.forEach(img => {
+                    img.classList.add('loaded');
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                        // Skip animation for users who prefer reduced motion
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            targetElement.scrollIntoView();
+                        }
+                    } else {
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 
