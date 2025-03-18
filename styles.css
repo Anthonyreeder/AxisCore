@@ -67,7 +67,8 @@ h3 { font-size: var(--h3-size); }
 
 /* Hero Section */
 .hero-section {
-  padding: calc(var(--spacing-xl) * 1.5) 0;
+  padding: calc(var(--spacing-lg) * 1.5) 0;
+  margin-top: calc(var(--spacing-md) * -1);
   background: linear-gradient(135deg, var(--background), var(--background-alt), var(--background));
   position: relative;
   overflow: hidden;
@@ -126,17 +127,17 @@ h3 { font-size: var(--h3-size); }
 .cta-button {
   padding: 1.25rem 2.5rem;
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.125rem;
+  font-weight: 700;
+  font-size: 1.25rem;
   transition: var(--transition-fast);
   cursor: pointer;
   border: none;
   position: relative;
   overflow: hidden;
-  min-height: 3.75rem;
-  min-width: 220px;
+  min-height: 4.5rem;
+  min-width: 260px;
   text-align: center;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
 }
 
 .cta-button::after {
@@ -159,14 +160,14 @@ h3 { font-size: var(--h3-size); }
 }
 
 .cta-button.primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
-  min-width: 200px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
 }
 
 .cta-button.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.45);
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
 }
 
 .cta-button.secondary {
@@ -190,13 +191,43 @@ h3 { font-size: var(--h3-size); }
 .problem-solution-pair {
   padding: var(--spacing-lg);
   border-radius: 12px;
-  background: linear-gradient(to right, var(--background), var(--background-alt));
+  background: linear-gradient(
+    to right,
+    var(--background),
+    var(--background-alt)
+  );
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+  margin-bottom: var(--spacing-md);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .problem-solution-pair:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.problem-solution-pair:nth-child(even) {
+  background: linear-gradient(
+    to left,
+    var(--background),
+    var(--background-alt)
+  );
+  border-left: none;
+  border-right: 4px solid var(--primary);
+}
+
+.solution-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm);
+  color: white;
+  font-size: 1.5rem;
 }
 
 .success-metric {
@@ -223,6 +254,7 @@ h3 { font-size: var(--h3-size); }
 @media (max-width: 768px) {
   .problem-solution-pair {
     padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
   }
   
   .cta-group {
@@ -235,6 +267,13 @@ h3 { font-size: var(--h3-size); }
     width: 100%;
     padding: 1.25rem 2rem;
     font-size: 1.125rem;
+    min-height: 4rem;
+  }
+  
+  .solution-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
   }
   
   .success-metric,
@@ -724,7 +763,7 @@ html {
 /* Enhanced Mobile Responsiveness */
 @media (max-width: 768px) {
   .hero-section {
-    padding: var(--spacing-lg) var(--spacing-sm);
+    padding: var(--spacing-lg) 0;
   }
   
   .problem-solution-pair {
@@ -797,7 +836,7 @@ html {
 /* Enhanced Hero Section */
 .hero-section {
   background-size: 400% 400%;
-  padding: calc(var(--spacing-xl) * 1.5) 0;
+  padding: calc(var(--spacing-lg) * 1.5) 0;
 }
 
 .hero-content h1 {
@@ -1384,4 +1423,60 @@ button {
   .pricing-features li {
     border-bottom: 1pt solid var(--text-secondary);
   }
+}
+
+/* Improved Section Flow */
+.section-spacing {
+  padding: var(--spacing-lg) 0;
+  position: relative;
+}
+
+.section-spacing::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(var(--primary), 0.1),
+    transparent
+  );
+}
+
+/* Enhanced Problem Section Typography */
+.problems-section h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary);
+}
+
+.problem-description {
+  line-height: 1.8;
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 65ch;
+}
+
+/* Improved Section Transitions */
+.section-transition {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-transition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    var(--background),
+    transparent
+  );
+  pointer-events: none;
 }
