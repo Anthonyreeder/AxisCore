@@ -88,7 +88,7 @@ h3 { font-size: var(--h3-size); }
   animation: fadeIn 0.8s ease-out;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   margin-bottom: var(--spacing-xl);
 }
 
@@ -119,16 +119,16 @@ h3 { font-size: var(--h3-size); }
 .cta-group {
   margin-top: var(--spacing-xl);
   display: flex;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   position: relative;
   z-index: 3;
 }
 
 .cta-button {
-  padding: 1rem 2rem;
+  padding: 1.25rem 2rem;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.125rem;
   transition: var(--transition-fast);
   cursor: pointer;
   border: none;
@@ -161,7 +161,7 @@ h3 { font-size: var(--h3-size); }
 .cta-button.primary {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
 }
 
@@ -208,19 +208,18 @@ h3 { font-size: var(--h3-size); }
 }
 
 .success-metric {
-  margin-top: var(--spacing-md);
-  padding: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
   background: linear-gradient(to right, var(--background-alt), var(--background));
   border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
   color: var(--success);
   font-weight: 600;
   transform: translateY(0);
   transition: transform var(--transition-medium);
   border-left: 4px solid var(--success);
-  padding-left: var(--spacing-md);
 }
 
 .problem-solution-pair:hover .success-metric {
@@ -228,10 +227,12 @@ h3 { font-size: var(--h3-size); }
 }
 
 .metric-value {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary);
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-xs);
 }
 
@@ -245,17 +246,24 @@ h3 { font-size: var(--h3-size); }
   
   .cta-group {
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
+    width: 100%;
   }
   
   .cta-button {
     width: 100%;
-    min-height: 3.5rem;
+    padding: 1.25rem 2rem;
+    font-size: 1.125rem;
   }
   
-  .success-metric {
-    margin: var(--spacing-sm) 0;
-    padding: var(--spacing-sm) var(--spacing-md);
+  .success-metric,
+  .case-study-metrics {
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+  
+  .metric-value {
+    font-size: 1.25rem;
   }
   
   .testimonial-content {
@@ -345,9 +353,9 @@ h3 { font-size: var(--h3-size); }
 }
 
 .case-study-metrics {
-  background: var(--background-alt);
-  padding: var(--spacing-md);
-  margin: var(--spacing-sm) 0;
+  background: linear-gradient(to right, var(--background-alt), var(--background));
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin: var(--spacing-md) 0;
   border-radius: 8px;
   border-left: 4px solid var(--success);
 }
@@ -408,7 +416,7 @@ h3 { font-size: var(--h3-size); }
   left: 0;
   top: 50%;
   width: var(--spacing-md);
-  height: 2px;
+  height: 3px;
   background: var(--primary);
   transform: translateY(-50%);
 }
@@ -574,6 +582,12 @@ html {
     break-inside: avoid;
     page-break-inside: avoid;
   }
+  
+  .case-study-metrics,
+  .success-metric {
+    border-left: 2pt solid var(--success);
+    background: none;
+  }
 }
 
 /* Cross-Browser Compatibility */
@@ -714,7 +728,7 @@ html {
 /* Enhanced Mobile Responsiveness */
 @media (max-width: 768px) {
   .hero-section {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-lg) var(--spacing-sm);
   }
   
   .problem-solution-pair {
