@@ -1,16 +1,16 @@
 /* Base Variables */
 :root {
   /* Expanded Color System */
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --primary-gradient: linear-gradient(135deg, #2563eb, #1e40af);
-  --accent: #0ea5e9;
-  --accent-dark: #0284c7;
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-  --background: #ffffff;
-  --background-alt: #f8fafc;
-  --success: #22c55e;
+  --primary: #001F3F;
+  --primary-dark: #00172D;
+  --primary-gradient: linear-gradient(135deg, #001F3F, #0A4B91);
+  --accent: #008B8B;
+  --accent-dark: #006666;
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --background: #FFFFFF;
+  --background-alt: #F8FAFC;
+  --success: #22C55E;
   --error: #ef4444;
   
   /* Enhanced Typography */
@@ -168,7 +168,7 @@ h3 { font-size: 2rem; }
 .cta-button.primary {
   background: var(--primary-gradient);
   color: white;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .cta-button.primary:hover {
@@ -1880,9 +1880,9 @@ p {
   --primary-light: #0A4B91;
   
   /* Accent Colors */
-  --accent: #CA9E2B;
-  --accent-dark: #A17D1A;
-  --accent-light: #E4B94C;
+  --accent: #008B8B;
+  --accent-dark: #006666;
+  --accent-light: #00ADAD;
   
   /* Success/Positive Color */
   --success: #22C55E;
@@ -2215,98 +2215,4 @@ select:focus-visible {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Theme Switcher (Temporary) - Will be removed after theme selection */
-#theme-switcher {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 220px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    font-family: var(--font-primary);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    transform: translateY(calc(100% - 40px));
-}
-
-#theme-switcher:hover,
-#theme-switcher.active {
-    transform: translateY(0);
-}
-
-.theme-switcher-toggle {
-    padding: 10px 15px;
-    background: var(--primary);
-    color: white;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.theme-switcher-options {
-    padding: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.theme-option {
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.2s ease;
-}
-
-.theme-option:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.theme-option.active {
-    background-color: rgba(0, 0, 0, 0.08);
-}
-
-.color-preview {
-    display: flex;
-    margin-right: 10px;
-}
-
-.color-swatch {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Color Themes */
-:root {
-    /* Default Theme: Navy & Gold */
-    --primary: #001F3F;
-    --primary-dark: #00172D;
-    --primary-light: #0A4B91;
-    --accent: #CA9E2B;
-    --accent-dark: #A17D1A;
-    --accent-light: #E4B94C;
-    --primary-gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
-    --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
-}
-
-/* Theme transitions */
-* {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* For hero section and other background elements to transition */
-[style*="background-image"] {
-    transition: background-image 0.3s ease;
 }
