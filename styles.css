@@ -168,7 +168,7 @@ h3 { font-size: 2rem; }
 .cta-button.primary {
   background: var(--primary-gradient);
   color: white;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 31, 63, 0.4);
 }
 
 .cta-button.primary:hover {
