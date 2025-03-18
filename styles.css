@@ -96,9 +96,8 @@ h3 { font-size: var(--h3-size); }
   font-size: clamp(1.125rem, 2vw, 1.375rem);
   line-height: 1.8;
   color: var(--text-secondary);
-  max-width: 650px;
-  opacity: 0;
-  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  max-width: 700px;
+  margin-bottom: var(--spacing-lg);
 }
 
 .hero-credentials {
@@ -134,7 +133,8 @@ h3 { font-size: var(--h3-size); }
   border: none;
   position: relative;
   overflow: hidden;
-  min-width: 200px;
+  min-height: 3.75rem;
+  min-width: 220px;
   text-align: center;
   letter-spacing: 0.5px;
 }
@@ -686,12 +686,13 @@ html {
 }
 
 .hero-content h1 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  line-height: 1.2;
+  font-size: clamp(2.75rem, 4vw, 3.75rem);
+  line-height: 1.15;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: var(--spacing-md);
+  max-width: 900px;
 }
 
 /* Services Section Improvements */
@@ -831,12 +832,13 @@ html {
 }
 
 .hero-content h1 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  line-height: 1.2;
+  font-size: clamp(2.75rem, 4vw, 3.75rem);
+  line-height: 1.15;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: var(--spacing-md);
+  max-width: 900px;
 }
 
 /* Enhanced Service Metrics */
@@ -921,7 +923,7 @@ html {
 /* Enhanced Mobile Responsiveness */
 @media (max-width: 768px) {
   .hero-content h1 {
-    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-size: clamp(2rem, 3vw, 2.75rem);
   }
 
   .metric-value {
@@ -994,4 +996,152 @@ button {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   z-index: 100;
   backdrop-filter: blur(8px);
+}
+
+/* Services Section ROI Focus */
+.service-impact {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: linear-gradient(to right, var(--background-alt), var(--background));
+  border-radius: 8px;
+  border-left: 5px solid var(--success);
+}
+
+.impact-metric {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.impact-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+/* Case Studies Enhancement */
+.case-study-content {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.case-study-problem,
+.case-study-solution,
+.case-study-results {
+  padding: var(--spacing-md);
+  border-left: 4px solid transparent;
+}
+
+.case-study-problem {
+  border-left-color: var(--error);
+  background: linear-gradient(to right, rgba(239, 68, 68, 0.05), transparent);
+}
+
+.case-study-solution {
+  border-left-color: var(--primary);
+  background: linear-gradient(to right, rgba(37, 99, 235, 0.05), transparent);
+}
+
+.case-study-results {
+  border-left-color: var(--success);
+  background: linear-gradient(to right, rgba(34, 197, 94, 0.05), transparent);
+}
+
+/* Trusted By Section */
+.trusted-by {
+  padding: var(--spacing-xl) 0;
+  background: var(--background-alt);
+}
+
+.client-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xl);
+  flex-wrap: wrap;
+  margin: var(--spacing-lg) 0;
+}
+
+.client-logo {
+  opacity: 0.7;
+  transition: opacity var(--transition-medium);
+  filter: grayscale(1);
+}
+
+.client-logo:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+/* Team Section */
+.team-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.expertise-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.expertise-card {
+  padding: var(--spacing-lg);
+  background: var(--background);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Contact Info Enhancement */
+.contact-info {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  margin-left: auto;
+}
+
+.contact-info a {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.contact-info a:hover {
+  color: var(--primary);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: clamp(2rem, 3vw, 2.75rem);
+  }
+  
+  .cta-button {
+    min-height: 4rem;
+    width: 100%;
+  }
+  
+  .impact-metric {
+    font-size: 1.75rem;
+  }
+  
+  .client-logos {
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+  }
+  
+  .contact-info {
+    margin: var(--spacing-sm) 0;
+    justify-content: center;
+  }
 }
