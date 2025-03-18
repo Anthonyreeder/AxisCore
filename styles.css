@@ -114,6 +114,27 @@ h3 { font-size: var(--h3-size); }
   transition: var(--transition-fast);
   cursor: pointer;
   border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.cta-button:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 0;
 }
 
 .cta-button.primary {
@@ -185,6 +206,15 @@ h3 { font-size: var(--h3-size); }
     --background-alt: #1e293b;
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .case-study-card {
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+  }
+  
+  .case-study-card:hover {
+    box-shadow: 0 10px 15px -3px var(--shadow-color);
   }
 }
 
@@ -194,6 +224,8 @@ h3 { font-size: var(--h3-size); }
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-lg);
   margin: var(--spacing-lg) 0;
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
 }
 
 .case-study-card {
@@ -202,9 +234,16 @@ h3 { font-size: var(--h3-size); }
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: var(--transition-medium);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .case-study-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.case-study-card:focus-within {
   transform: translateY(-4px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
@@ -233,6 +272,8 @@ h3 { font-size: var(--h3-size); }
 .testimonial-slider {
   position: relative;
   margin: var(--spacing-lg) 0;
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
 }
 
 .testimonial-content {
@@ -306,6 +347,8 @@ h3 { font-size: var(--h3-size); }
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--spacing-md);
   margin: var(--spacing-lg) 0;
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
 }
 
 .metric-card {
@@ -361,5 +404,108 @@ html {
   * {
     transition: none !important;
     animation: none !important;
+  }
+}
+
+/* Animation Utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Enhanced Interactive Elements */
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Optimize font loading */
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+  /* Add your font sources here */
+}
+
+/* Enhanced Accessibility */
+@media (prefers-contrast: more) {
+  :root {
+    --primary: #0040c8;
+    --text-secondary: #363636;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .cta-button,
+  .nav-links,
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* Cross-Browser Compatibility */
+/* Firefox-specific styles */
+@-moz-document url-prefix() {
+  .case-study-card {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Safari-specific styles */
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    .hero-section {
+      -webkit-transform: translateZ(0);
+    }
+  }
+}
+
+/* Enhanced Mobile Experience */
+@media (hover: none) {
+  .cta-button:hover {
+    transform: none;
+  }
+  
+  .case-study-card:hover {
+    transform: none;
+  }
+  
+  /* Add touch feedback instead */
+  .cta-button:active,
+  .case-study-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Loading State Optimizations */
+.js-loading {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.js-loaded {
+  opacity: 1;
+}
+
+/* Enhanced Focus States */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Smooth Scrolling Enhancements */
+@media (prefers-reduced-motion: no-preference) {
+  .smooth-scroll {
+    scroll-margin-top: 2rem;
   }
 }
