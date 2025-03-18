@@ -72,7 +72,7 @@ h3 { font-size: var(--h3-size); }
   position: relative;
   overflow: hidden;
   animation: gradientShift 15s ease infinite;
-  background-size: 200% 200%;
+  background-size: 300% 300%;
 }
 
 @keyframes gradientShift {
@@ -88,12 +88,12 @@ h3 { font-size: var(--h3-size); }
   animation: fadeIn 0.8s ease-out;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
 }
 
 .hero-subtitle {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
   color: var(--text-secondary);
   margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-md);
@@ -119,7 +119,7 @@ h3 { font-size: var(--h3-size); }
 .cta-group {
   margin-top: var(--spacing-xl);
   display: flex;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xl);
   position: relative;
   z-index: 3;
 }
@@ -161,7 +161,7 @@ h3 { font-size: var(--h3-size); }
 .cta-button.primary {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
 }
 
@@ -209,8 +209,8 @@ h3 { font-size: var(--h3-size); }
 
 .success-metric {
   margin-top: var(--spacing-lg);
-  padding: var(--spacing-md) var(--spacing-lg);
-  background: linear-gradient(to right, var(--background-alt), var(--background));
+  padding: var(--spacing-lg) var(--spacing-xl);
+  background: linear-gradient(to right, var(--background-alt) 0%, var(--background) 100%);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -219,7 +219,7 @@ h3 { font-size: var(--h3-size); }
   font-weight: 600;
   transform: translateY(0);
   transition: transform var(--transition-medium);
-  border-left: 4px solid var(--success);
+  border-left: 6px solid var(--success);
 }
 
 .problem-solution-pair:hover .success-metric {
@@ -227,7 +227,7 @@ h3 { font-size: var(--h3-size); }
 }
 
 .metric-value {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--primary);
   display: flex;
@@ -263,7 +263,7 @@ h3 { font-size: var(--h3-size); }
   }
   
   .metric-value {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
   
   .testimonial-content {
@@ -346,6 +346,9 @@ h3 { font-size: var(--h3-size); }
   border-radius: 4px;
   font-size: 0.875rem;
   margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .case-study-content {
@@ -357,7 +360,8 @@ h3 { font-size: var(--h3-size); }
   padding: var(--spacing-md) var(--spacing-lg);
   margin: var(--spacing-md) 0;
   border-radius: 8px;
-  border-left: 4px solid var(--success);
+  border-left: 6px solid var(--success);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Testimonials Section */
@@ -407,7 +411,7 @@ h3 { font-size: var(--h3-size); }
   margin-top: var(--spacing-md);
   font-weight: 600;
   position: relative;
-  padding-left: var(--spacing-lg);
+  padding-left: var(--spacing-xl);
 }
 
 .testimonial-author::before {
@@ -415,8 +419,8 @@ h3 { font-size: var(--h3-size); }
   position: absolute;
   left: 0;
   top: 50%;
-  width: var(--spacing-md);
-  height: 3px;
+  width: var(--spacing-lg);
+  height: 4px;
   background: var(--primary);
   transform: translateY(-50%);
 }
@@ -585,8 +589,12 @@ html {
   
   .case-study-metrics,
   .success-metric {
-    border-left: 2pt solid var(--success);
+    border-left: 3pt solid var(--success);
     background: none;
+  }
+  
+  .metric-value {
+    color: var(--text-primary);
   }
 }
 
@@ -788,4 +796,12 @@ html {
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin-bottom: var(--spacing-xs);
+}
+
+/* Performance Enhancement */
+@media (prefers-reduced-motion: no-preference) {
+  .case-study-card,
+  .testimonial-content {
+    will-change: transform;
+  }
 }
