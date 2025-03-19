@@ -8,8 +8,9 @@
   --accent-dark: #006666;
   --text-primary: #1E293B;
   --text-secondary: #64748B;
-  --background: #FFFFFF;
-  --background-alt: #F8FAFC;
+  --background: #F5F9FF;
+  --background-alt: #F0F4F9;
+  --background-dark: #E8EEF7;
   --success: #22C55E;
   --error: #ef4444;
   
@@ -50,7 +51,12 @@ body {
   font-family: var(--font-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  background: var(--background);
+  background-color: #F5F9FF;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, rgba(0, 31, 63, 0.03) 25%, rgba(0, 31, 63, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 31, 63, 0.03) 75%, rgba(0, 31, 63, 0.03) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(0, 31, 63, 0.03) 25%, rgba(0, 31, 63, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 31, 63, 0.03) 75%, rgba(0, 31, 63, 0.03) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+  min-height: 100vh;
   font-size: 1.1rem;
 }
 
@@ -78,7 +84,7 @@ h3 { font-size: 2rem; }
   background-image: linear-gradient(135deg, 
     rgba(0, 31, 63, 0.85), 
     rgba(0, 31, 63, 0.7)
-  ), url('/path/to/premium-background.jpg');
+  ), url('assets/images/hero-background.jpg');
   background-size: cover;
   background-position: center;
   padding: calc(var(--spacing-xl) * 0.75) 0;
@@ -694,7 +700,7 @@ html {
   background-image: linear-gradient(135deg, 
     rgba(0, 31, 63, 0.85), 
     rgba(0, 31, 63, 0.7)
-  ), url('/path/to/premium-background.jpg');
+  ), url('assets/images/hero-background.jpg');
   background-size: cover;
   background-position: center;
   padding: calc(var(--spacing-xl) * 0.75) 0;
@@ -1024,23 +1030,24 @@ button {
 .site-header {
   position: sticky;
   top: 0;
-  background: var(--background);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   z-index: 100;
-  backdrop-filter: blur(8px);
   padding: 0.75rem 0;
 }
 
 .header-container {
   display: flex;
-  align-items: center;
+    align-items: center;
   justify-content: space-between;
   width: var(--container-width);
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .logo {
-  height: 40px;
+    height: 40px;
   width: auto;
 }
 
@@ -1423,18 +1430,16 @@ button {
 }
 
 .testimonial-card {
-  background: var(--background);
+  background: white;
   border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   padding: var(--spacing-lg);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(37, 99, 235, 0.1);
-  transform: translateY(0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .testimonial-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-content {
@@ -1559,7 +1564,7 @@ button {
   background: linear-gradient(90deg, 
     transparent, 
     rgba(var(--primary), 0.1),
-    transparent
+        transparent
     );
 }
 
@@ -1621,10 +1626,11 @@ button {
 .site-header {
   position: sticky;
   top: 0;
-  background: var(--background);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   z-index: 100;
-  backdrop-filter: blur(8px);
   padding: 0.75rem 0;
 }
 
@@ -1904,9 +1910,9 @@ p {
   --success: #22C55E;
   
   /* Background Colors */
-  --background: #FFFFFF;
-  --background-alt: #F8FAFC;
-  --background-dark: #EFF3F8;
+  --background: #F5F9FF;
+  --background-alt: #F0F4F9;
+  --background-dark: #E8EEF7;
   
   /* Text Colors */
   --text-primary: #1E293B;
@@ -2029,7 +2035,7 @@ select:focus-visible {
   border-radius: 12px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   padding: var(--spacing-lg);
-  border: 1px solid rgba(0, 31, 63, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .testimonial-author-image {
@@ -2083,7 +2089,7 @@ select:focus-visible {
   overflow: hidden;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   background: white;
-  border: 1px solid rgba(0, 31, 63, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .case-study-content {
@@ -2167,17 +2173,6 @@ select:focus-visible {
     to {
         opacity: 1;
     transform: translateX(0);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -2432,4 +2427,129 @@ textarea:focus {
     var(--background-alt) 50%, 
     var(--background)
   );
+}
+
+/* Ensure content sections have proper background handling */
+.section:not(.has-background) {
+  background: transparent; /* Allow the body gradient to show through */
+}
+
+/* Subtle card enhancements to stand out against the gradient */
+.testimonial-card,
+.case-study-card,
+.expertise-card,
+.pricing-tier,
+.contact-form {
+  background: white; /* Pure white cards will pop against the subtle gradient */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Slightly stronger shadow */
+  border: 1px solid rgba(0, 0, 0, 0.03); /* Very subtle border */
+}
+
+/* Option 3: Section-Specific Backgrounds */
+
+/* Default body background */
+body {
+  background-color: #F5F9FF;
+}
+
+/* Hero Section - Deep gradient to create impact */
+.hero-section {
+  background-image: linear-gradient(135deg, 
+    rgba(0, 31, 63, 0.85), 
+    rgba(0, 31, 63, 0.7)
+  ), url('assets/images/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Problem Section - Light texture */
+.problems-section {
+  background-image: url("assets/images/subtle-texture.png");
+  background-repeat: repeat;
+  background-size: 200px;
+  position: relative;
+}
+
+/* Services Section - Gradient background */
+.services-section {
+  background: linear-gradient(to bottom, 
+    #F0F4F9,
+    #E8EEF7,
+    #F0F4F9
+  );
+  position: relative;
+}
+
+/* Case Studies Section - Light texture with fade */
+.case-studies-section {
+  background-image: url("assets/images/subtle-texture.png");
+  background-repeat: repeat;
+  background-size: 200px;
+  position: relative;
+}
+
+/* Testimonials Section - Gradient */
+.testimonials-section {
+  background: linear-gradient(to bottom, 
+    #F0F4F9,
+    #E8EEF7,
+    #F0F4F9
+  );
+  position: relative;
+}
+
+/* Trusted By Section - Light texture */
+.trusted-by-section {
+  background-image: url("assets/images/subtle-texture.png");
+  background-repeat: repeat;
+  background-size: 200px;
+  background-color: #F5F9FF;
+  position: relative;
+}
+
+/* Pricing Section - Gradient */
+.pricing-section {
+  background: linear-gradient(to bottom, 
+    #F0F4F9,
+    #F5F9FF
+  );
+  position: relative;
+}
+
+/* Team Section - Light texture */
+.team-section {
+  background-image: url("assets/images/subtle-texture.png");
+  background-repeat: repeat;
+  background-size: 200px;
+  position: relative;
+}
+
+/* Contact Section - Clean white */
+.contact-section {
+  background: white;
+  position: relative;
+}
+
+/* Footer - Darker background */
+.site-footer {
+  background: linear-gradient(to bottom, 
+    #E8EEF7,
+    #D8E2F0
+  );
+}
+
+/* Section transition effects */
+.section:not(.hero-section):before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.8), 
+    transparent
+  );
+  z-index: 1;
+  pointer-events: none;
 }
