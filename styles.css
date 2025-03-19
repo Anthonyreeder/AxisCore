@@ -51,8 +51,8 @@ body {
   font-family: var(--font-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  background-image: url("assets/images/subtle-texture.png"); /* Use the provided texture image */
-  background-size: cover; /* Can also try values like: 200px, auto; */
+  background-image: url("assets/images/subtle-texture.png"); /* Using the provided texture image */
+  background-size: 300px; /* Setting a reasonable size for the pattern */
   background-repeat: repeat;
   min-height: 100vh;
   font-size: 1.1rem;
