@@ -51,7 +51,7 @@ body {
   font-family: var(--font-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  background-color: #f2f2f2; /* Slightly darker background color */
+  background-color: #696969; /* Updated to the requested gray color */
   background-image: url("https://www.transparenttextures.com/patterns/transparent-square-tiles.png");
   /* The texture is from transparenttextures.com, for production you should download and host it locally */
   min-height: 100vh;
@@ -1638,7 +1638,7 @@ button {
     align-items: center;
   justify-content: space-between;
   width: var(--container-width);
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .logo {
