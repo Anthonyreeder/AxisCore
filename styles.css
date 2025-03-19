@@ -51,12 +51,11 @@ body {
   font-family: var(--font-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  background-image: url("assets/images/subtle-texture.png");
-  background-size: 300px;
-  background-repeat: repeat;
+  background-color: #f2f2f2; /* Slightly darker background color */
+  background-image: url("https://www.transparenttextures.com/patterns/transparent-square-tiles.png");
+  /* The texture is from transparenttextures.com, for production you should download and host it locally */
   min-height: 100vh;
   font-size: 1.1rem;
-  background-color: #F5F7F9;
 }
 
 /* Container */
