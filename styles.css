@@ -56,6 +56,7 @@ body {
   background-repeat: repeat;
   min-height: 100vh;
   font-size: 1.1rem;
+  background-color: #F5F7F9;
 }
 
 /* Container */
@@ -415,7 +416,7 @@ h3 { font-size: 2rem; }
   font-style: italic;
   font-size: 1.15rem;
   line-height: 1.8;
-  position: relative;
+    position: relative;
   margin-bottom: var(--spacing-lg);
 }
 
@@ -1041,7 +1042,7 @@ button {
     align-items: center;
   justify-content: space-between;
   width: var(--container-width);
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .logo {
@@ -1416,13 +1417,12 @@ button {
 
 /* Standalone Testimonials Section */
 .testimonials-section {
-  background-color: var(--primary);
-  color: white;
+  background: linear-gradient(135deg, var(--background), var(--background-alt));
   padding: var(--spacing-xl) 0;
 }
 
 .testimonial-grid {
-  display: grid;
+    display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--spacing-xl);
   margin-top: var(--spacing-xl);
@@ -1437,7 +1437,7 @@ button {
 }
 
 .testimonial-card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -1472,7 +1472,7 @@ button {
 }
 
 .pricing-features li {
-  display: flex;
+    display: flex;
   align-items: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) 0;
@@ -1482,7 +1482,7 @@ button {
 /* Trust Building Elements */
 .trusted-by-section {
   padding: var(--spacing-xl) 0;
-  background-color: #F5F9FF;
+  background: var(--background-alt);
 }
 
 .team-expertise {
@@ -2350,7 +2350,7 @@ select:focus-visible {
 .footer-links a {
   text-decoration: none;
   color: var(--text-secondary);
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
   position: relative;
   padding-bottom: 2px;
 }
@@ -2384,7 +2384,7 @@ select:focus-visible {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-secondary);
   margin-right: 10px;
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .social-links a:hover {
@@ -2476,29 +2476,12 @@ body {
 
 /* Services Section - Gradient background */
 .services-section {
-  background-color: var(--primary);
-  color: white;
+  background: linear-gradient(to bottom, 
+    #F0F4F9,
+    #E8EEF7,
+    #F0F4F9
+  );
   position: relative;
-}
-
-.services-section .section-title,
-.services-section .section-subtitle,
-.services-section h3,
-.services-section p {
-  color: white;
-}
-
-.services-section .solution-icon {
-  color: var(--accent);
-}
-
-.services-section .success-metric {
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 4px solid var(--accent);
-}
-
-.services-section .metric-value {
-  color: var(--accent);
 }
 
 /* Case Studies Section - Light texture with fade */
@@ -2511,26 +2494,12 @@ body {
 
 /* Testimonials Section - Gradient */
 .testimonials-section {
-  background-color: var(--primary);
-  color: white;
+  background: linear-gradient(to bottom, 
+    #F0F4F9,
+    #E8EEF7,
+    #F0F4F9
+  );
   position: relative;
-}
-
-.testimonials-section .section-title,
-.testimonials-section .section-subtitle,
-.testimonials-section .testimonial-text,
-.testimonials-section .testimonial-author strong,
-.testimonials-section .author-title {
-  color: white;
-}
-
-.testimonials-section .testimonial-author-image {
-  border-color: white;
-}
-
-.testimonials-section .testimonial-text::before,
-.testimonials-section .testimonial-text::after {
-  color: var(--accent);
 }
 
 /* Trusted By Section - Light texture */
