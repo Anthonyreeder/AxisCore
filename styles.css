@@ -56,7 +56,6 @@ body {
   background-repeat: repeat;
   min-height: 100vh;
   font-size: 1.1rem;
-  background-color: #F5F7F9;
 }
 
 /* Container */
@@ -1417,7 +1416,8 @@ button {
 
 /* Standalone Testimonials Section */
 .testimonials-section {
-  background: linear-gradient(135deg, var(--background), var(--background-alt));
+  background-color: var(--primary);
+  color: white;
   padding: var(--spacing-xl) 0;
 }
 
@@ -1482,7 +1482,7 @@ button {
 /* Trust Building Elements */
 .trusted-by-section {
   padding: var(--spacing-xl) 0;
-  background: var(--background-alt);
+  background-color: #F5F9FF;
 }
 
 .team-expertise {
@@ -2476,12 +2476,29 @@ body {
 
 /* Services Section - Gradient background */
 .services-section {
-  background: linear-gradient(to bottom, 
-    #F0F4F9,
-    #E8EEF7,
-    #F0F4F9
-  );
+  background-color: var(--primary);
+  color: white;
   position: relative;
+}
+
+.services-section .section-title,
+.services-section .section-subtitle,
+.services-section h3,
+.services-section p {
+  color: white;
+}
+
+.services-section .solution-icon {
+  color: var(--accent);
+}
+
+.services-section .success-metric {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--accent);
+}
+
+.services-section .metric-value {
+  color: var(--accent);
 }
 
 /* Case Studies Section - Light texture with fade */
@@ -2494,12 +2511,26 @@ body {
 
 /* Testimonials Section - Gradient */
 .testimonials-section {
-  background: linear-gradient(to bottom, 
-    #F0F4F9,
-    #E8EEF7,
-    #F0F4F9
-  );
+  background-color: var(--primary);
+  color: white;
   position: relative;
+}
+
+.testimonials-section .section-title,
+.testimonials-section .section-subtitle,
+.testimonials-section .testimonial-text,
+.testimonials-section .testimonial-author strong,
+.testimonials-section .author-title {
+  color: white;
+}
+
+.testimonials-section .testimonial-author-image {
+  border-color: white;
+}
+
+.testimonials-section .testimonial-text::before,
+.testimonials-section .testimonial-text::after {
+  color: var(--accent);
 }
 
 /* Trusted By Section - Light texture */
