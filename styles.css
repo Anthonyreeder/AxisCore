@@ -51,11 +51,12 @@ body {
   font-family: var(--font-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  background-image: url("assets/images/subtle-texture.png"); /* Using the provided texture image */
-  background-size: 300px; /* Setting a reasonable size for the pattern */
+  background-image: url("assets/images/subtle-texture.png");
+  background-size: 300px;
   background-repeat: repeat;
   min-height: 100vh;
   font-size: 1.1rem;
+  background-color: #F5F7F9;
 }
 
 /* Container */
