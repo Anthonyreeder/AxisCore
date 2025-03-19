@@ -51,7 +51,9 @@ body {
   font-family: var(--font-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  background: linear-gradient(180deg, #F8FAFC 0%, #F2F2F2 100%); /* Subtle gray variation */
+  background-image: url("assets/images/subtle-texture.png"); /* Use the provided texture image */
+  background-size: cover; /* Can also try values like: 200px, auto; */
+  background-repeat: repeat;
   min-height: 100vh;
   font-size: 1.1rem;
 }
@@ -175,7 +177,7 @@ h3 { font-size: 2rem; }
 
 .cta-button.primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 31, 63, 0.3);
 }
 
 .cta-button.secondary {
@@ -1809,6 +1811,7 @@ button:focus-visible,
 a:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
+  transition: outline-offset 0.2s ease;
 }
 
 /* Enhanced Section Spacing and Layout */
@@ -1879,9 +1882,12 @@ p {
 /* Enhanced Card Spacing */
 .testimonial-card,
 .case-study-card,
-.expertise-card {
-  margin-bottom: var(--spacing-lg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.expertise-card,
+.pricing-tier,
+.contact-form {
+  background: white; /* Pure white cards will pop against the subtle gradient */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Slightly stronger shadow */
+  border: 1px solid rgba(0, 0, 0, 0.03); /* Very subtle border */
 }
 
 .testimonial-card:hover,
