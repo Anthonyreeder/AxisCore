@@ -51,11 +51,7 @@ body {
   font-family: var(--font-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  background-color: #F5F9FF;
-  background-image: 
-    linear-gradient(0deg, transparent 24%, rgba(0, 31, 63, 0.03) 25%, rgba(0, 31, 63, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 31, 63, 0.03) 75%, rgba(0, 31, 63, 0.03) 76%, transparent 77%, transparent),
-    linear-gradient(90deg, transparent 24%, rgba(0, 31, 63, 0.03) 25%, rgba(0, 31, 63, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 31, 63, 0.03) 75%, rgba(0, 31, 63, 0.03) 76%, transparent 77%, transparent);
-  background-size: 50px 50px;
+  background: linear-gradient(180deg, #F8FAFC 0%, #F2F2F2 100%); /* Subtle gray variation */
   min-height: 100vh;
   font-size: 1.1rem;
 }
@@ -1595,12 +1591,13 @@ button {
   top: 0;
   left: 0;
   right: 0;
-  height: 120px;
+  height: 80px;
   background: linear-gradient(
     to bottom,
-    var(--background),
+    rgba(255, 255, 255, 0.8), 
     transparent
   );
+  z-index: 1;
   pointer-events: none;
 }
 
